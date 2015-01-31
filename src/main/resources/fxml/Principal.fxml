@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.srsolutions.softwarefx.controller.PrincipalController">
+  <children>
+    <Pane prefHeight="40.0" prefWidth="800.0" styleClass="pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <Pane prefHeight="40.0" prefWidth="800.0" styleClass="pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    <TabPane fx:id="tabPane" prefHeight="520.0" prefWidth="590.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+    <Accordion fx:id="accordion" expandedPane="$null" minWidth="198.0" prefHeight="520.0" prefWidth="210.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0" />
+  </children>
+  <stylesheets>
+    <URL value="@../styles/Principal.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.srsolutions.softwarefx.controller.GrupoUsuarioCadastroController">
+  <children>
+    <ToolBar orientation="HORIZONTAL" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <Button mnemonicParsing="false" text="%salvar">
+          <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../icons/save_16.png" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Button>
+        <Button mnemonicParsing="false" text="%salvarEFechar">
+          <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../icons/save_16.png" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Button>
+        <Button mnemonicParsing="false" text="%cancelar">
+          <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../icons/undo_16.png" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Button>
+      </items>
+    </ToolBar>
+    <TitledPane animated="false" collapsible="false" prefHeight="369.0" prefWidth="600.0" text="%dadosDoGrupoDeUsuario" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <Label text="%codigo" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="6.0" />
+            <TextField prefWidth="100.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="22.0" />
+            <TextField prefWidth="362.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="22.0" />
+            <Label text="%descricao" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="6.0" />
+            <TextField prefWidth="100.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="22.0" />
+            <Label text="%dataDeCadastro" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="6.0" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

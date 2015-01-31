@@ -1,0 +1,17 @@
+/*.root{
+  -fx-body-color: #5677FC;
+  -fx-text-base-color: #FFEB3B;
+}
+
+.button{
+  -fx-background-color: -fx-body-color;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
+  -fx-text-fill: -fx-text-base-color;
+}
+
+.button:focused{
+  -fx-background-color: white, -fx-body-color, black, -fx-body-color;
+  -fx-background-insets: -2, 0, 1, 0;
+  -fx-background-radius: 0;
+}*/
