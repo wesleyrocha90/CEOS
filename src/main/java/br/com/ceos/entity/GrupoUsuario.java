@@ -1,4 +1,4 @@
-package br.com.srsolutions.softwarefx.entity;
+package br.com.ceos.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,18 +15,18 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "GRUPO_USUARIO")
 public class GrupoUsuario implements Serializable {
-  
+
   private static final String SEQUENCE = "SEQ_GRUPO_USUARIO_ID";
-  
+
   @Id
   @Column(name = "ID")
   @SequenceGenerator(name = GrupoUsuario.SEQUENCE, sequenceName = GrupoUsuario.SEQUENCE, allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
   private int id;
-  
+
   @Column(name = "DESCRICAO")
   private String descricao;
-  
+
   @Column(name = "DATA_CADASTRO")
   @Temporal(TemporalType.DATE)
   private Date dataCadasatro;

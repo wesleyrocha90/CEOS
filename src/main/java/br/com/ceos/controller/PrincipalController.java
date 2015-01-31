@@ -1,9 +1,9 @@
-package br.com.srsolutions.softwarefx.controller;
+package br.com.ceos.controller;
 
-import br.com.srsolutions.softwarefx.entity.MenuItem;
-import br.com.srsolutions.softwarefx.entity.MenuPainel;
-import br.com.srsolutions.softwarefx.util.BundleUtil;
-import br.com.srsolutions.softwarefx.util.JPAUtil;
+import br.com.ceos.entity.MenuItem;
+import br.com.ceos.entity.MenuPainel;
+import br.com.ceos.util.BundleUtil;
+import br.com.ceos.util.JPAUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -26,13 +26,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 public class PrincipalController implements Initializable {
-  
+
   @FXML
   private Accordion accordion;
-  
+
   @FXML
   private TabPane tabPane;
-  
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     EntityManager em = JPAUtil.getEntityManager();
@@ -42,16 +42,16 @@ public class PrincipalController implements Initializable {
       TitledPane titledPane = new TitledPane();
       titledPane.setText(BundleUtil.getString(menuPainel.getTitulo()));
       VBox vbox = new VBox();
-      
+
       Query queryItem = em.createNamedQuery("MenuItem.findAllByMenu");
       queryItem.setParameter("pai", menuPainel);
       List<MenuItem> itens = queryItem.getResultList();
-      
+
       for (final MenuItem menuItem : itens) {
         Button button = new Button();
         button.setMaxWidth(Double.MAX_VALUE);
         button.setText(BundleUtil.getString(menuItem.getTitulo()));
-        ImageView image = new ImageView(getClass().getResource("/icons/"+menuItem.getImagem()+".png").toString());
+        ImageView image = new ImageView(getClass().getResource("/icons/" + menuItem.getImagem() + ".png").toString());
         image.setFitHeight(16);
         image.setFitWidth(16);
         image.setPreserveRatio(true);
@@ -59,14 +59,14 @@ public class PrincipalController implements Initializable {
         button.setOnAction(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent event) {
-            try{
+            try {
               Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
-              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+menuItem.getFxmlTela()+".fxml"), BundleUtil.getBundle());
+              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
               Parent root = (Parent) fxmlLoader.load();
               root.setPickOnBounds(true);
               tab.setContent(root);
               tabPane.getTabs().add(tab);
-            } catch(IOException ex) {
+            } catch (IOException ex) {
             }
           }
         });

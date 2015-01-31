@@ -18,6 +18,7 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <mainClass>br.com.ceos.main.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -30,7 +31,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>8.1.2</version>
         <configuration>
-          <mainClass>br.com.ceos.MainApp</mainClass>
+          <mainClass>br.com.ceos.main.Main</mainClass>
           <!-- only required if signing the jar file -->
           <keyStoreAlias>example-user</keyStoreAlias>
           <keyStorePassword>example-password</keyStorePassword>
@@ -88,12 +89,6 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-      <version>2.5.2</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 

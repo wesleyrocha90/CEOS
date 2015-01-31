@@ -1,4 +1,4 @@
-package br.com.srsolutions.softwarefx.data;
+package br.com.ceos.data;
 
 import java.util.Date;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class UsuarioData {
+
   private SimpleIntegerProperty id;
   private SimpleStringProperty login;
   private SimpleBooleanProperty ativo;

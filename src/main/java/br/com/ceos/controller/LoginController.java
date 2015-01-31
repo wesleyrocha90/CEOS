@@ -1,12 +1,10 @@
-package br.com.srsolutions.softwarefx.controller;
+package br.com.ceos.controller;
 
-import br.com.srsolutions.softwarefx.entity.Usuario;
-import br.com.srsolutions.softwarefx.util.BundleUtil;
+import br.com.ceos.entity.Usuario;
+import br.com.ceos.util.BundleUtil;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,10 +26,10 @@ public class LoginController implements Initializable {
 
   @FXML
   private PasswordField passwordField;
-  
+
   @FXML
   private Label erro;
-  
+
   private boolean loginValido;
 
   @FXML
@@ -39,9 +37,9 @@ public class LoginController implements Initializable {
     erro.setText("");
     String login = textField.getText();
     String senha = passwordField.getText();
-    if ("".equals(login)){
+    if ("".equals(login)) {
       erro.setText(BundleUtil.getString("usuarioNaoInformado"));
-    } else if ("".equals(senha)){
+    } else if ("".equals(senha)) {
       erro.setText(BundleUtil.getString("senhaNaoInformada"));
     } else {
       // TODO: fazer uma classe que providencie o gerenciamento do banco de dados, para evitar código repetido
@@ -52,13 +50,13 @@ public class LoginController implements Initializable {
       query.setParameter("senha", senha);
       try {
         Usuario usuario = (Usuario) query.getSingleResult();
-        if (usuario.isAtivo() && usuario.getDataExpiração().after(new Date())){ 
+        if (usuario.isAtivo() && usuario.getDataExpiração().after(new Date())) {
           loginValido = true;
           erro.getScene().getWindow().hide();
         } else {
           erro.setText(BundleUtil.getString("usuarioOuSenhaIncorretos"));
         }
-      } catch(NoResultException ex) {
+      } catch (NoResultException ex) {
         erro.setText(BundleUtil.getString("usuarioOuSenhaIncorretos"));
       }
     }
@@ -66,10 +64,10 @@ public class LoginController implements Initializable {
 
   @FXML
   private void textFieldUSuarioOnKeyPressed(KeyEvent event) {
-    if (event.getCode() == KeyCode.ENTER){
-      if ("".equals(passwordField.getText())){
+    if (event.getCode() == KeyCode.ENTER) {
+      if ("".equals(passwordField.getText())) {
         passwordField.requestFocus();
-      }else{
+      } else {
         buttonEntrarOnAction(null);
       }
     }
@@ -77,16 +75,16 @@ public class LoginController implements Initializable {
 
   @FXML
   private void textFieldSenhaOnKeyPressed(KeyEvent event) {
-    if (event.getCode() == KeyCode.ENTER){
-      if ("".equals(textField.getText())){
+    if (event.getCode() == KeyCode.ENTER) {
+      if ("".equals(textField.getText())) {
         textField.requestFocus();
-      }else{
+      } else {
         buttonEntrarOnAction(null);
       }
     }
   }
-  
-  public boolean isLoginValido(){
+
+  public boolean isLoginValido() {
     return loginValido;
   }
 

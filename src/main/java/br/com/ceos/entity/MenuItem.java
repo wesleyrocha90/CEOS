@@ -1,4 +1,4 @@
-package br.com.srsolutions.softwarefx.entity;
+package br.com.ceos.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -16,27 +16,27 @@ import javax.persistence.Table;
   @NamedQuery(name = "MenuItem.findAllByMenu", query = "SELECT m FROM MenuItem m WHERE m.pai = :pai ORDER BY m.ordem")
 })
 public class MenuItem implements Serializable {
-  
+
   @Id
   @Column(name = "ID")
   private int id;
-  
+
   @Column(name = "TITULO")
   private String titulo;
-  
+
   @Column(name = "IMAGEM")
   private String imagem;
-  
+
   @Column(name = "FXML_TELA")
   private String fxmlTela;
-  
+
   @ManyToOne
   @JoinColumn(name = "FK_ID_MENU_PAINEL", referencedColumnName = "ID")
   private MenuPainel pai;
-  
+
   @Column(name = "ORDEM")
   private int ordem;
-  
+
   public MenuItem() {
   }
 

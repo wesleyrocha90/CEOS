@@ -1,4 +1,4 @@
-package br.com.srsolutions.softwarefx.entity;
+package br.com.ceos.entity;
 
 import java.io.Serializable;
 import java.util.Date;

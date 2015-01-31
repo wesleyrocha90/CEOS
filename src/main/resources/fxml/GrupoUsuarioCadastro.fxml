@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.srsolutions.softwarefx.controller.GrupoUsuarioCadastroController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.ceos.controller.GrupoUsuarioCadastroController">
   <children>
     <ToolBar orientation="HORIZONTAL" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>

@@ -1,4 +1,4 @@
-package br.com.srsolutions.softwarefx.entity;
+package br.com.ceos.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -14,14 +14,14 @@ import javax.persistence.Table;
   @NamedQuery(name = "MenuPainel.findAll", query = "SELECT m FROM MenuPainel m ORDER BY m.ordem")
 })
 public class MenuPainel implements Serializable {
-  
+
   @Id
   @Column(name = "ID")
   private int id;
-  
+
   @Column(name = "TITULO")
   private String titulo;
-  
+
   @Column(name = "ORDEM")
   private int ordem;
 
