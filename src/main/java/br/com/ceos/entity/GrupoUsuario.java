@@ -7,59 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "GRUPO_USUARIO")
+@NoArgsConstructor
 public class GrupoUsuario implements Serializable {
-
-  private static final String SEQUENCE = "SEQ_GRUPO_USUARIO_ID";
 
   @Id
   @Column(name = "ID")
-  @SequenceGenerator(name = GrupoUsuario.SEQUENCE, sequenceName = GrupoUsuario.SEQUENCE, allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter @Setter private int id;
 
   @Column(name = "DESCRICAO")
-  private String descricao;
+  @Getter @Setter private String descricao;
 
   @Column(name = "DATA_CADASTRO")
   @Temporal(TemporalType.DATE)
-  private Date dataCadasatro;
-
-  public GrupoUsuario() {
-  }
+  @Getter @Setter private Date dataCadasatro;
 
   public GrupoUsuario(String descricao, Date dataCadasatro) {
     this.descricao = descricao;
-    this.dataCadasatro = dataCadasatro;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getDescricao() {
-    return descricao;
-  }
-
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
-
-  public Date getDataCadasatro() {
-    return dataCadasatro;
-  }
-
-  public void setDataCadasatro(Date dataCadasatro) {
     this.dataCadasatro = dataCadasatro;
   }
 }

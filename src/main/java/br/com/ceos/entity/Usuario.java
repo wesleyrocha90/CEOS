@@ -11,12 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "USUARIO")
@@ -25,42 +27,37 @@ import javax.validation.constraints.NotNull;
   @NamedQuery(name = "Usuario.findAllByNome", query = "SELECT u FROM Usuario u WHERE u.login = :login"),
   @NamedQuery(name = "Usuario.findByLoginSenha", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")
 })
+@NoArgsConstructor
 public class Usuario implements Serializable {
-
-  private static final String SEQUENCE = "SEQ_USUARIO_ID";
 
   @Id
   @Column(name = "ID")
-  @SequenceGenerator(name = Usuario.SEQUENCE, sequenceName = Usuario.SEQUENCE, allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter @Setter private int id;
 
   @Column(name = "LOGIN")
   @NotNull
-  private String login;
+  @Getter @Setter private String login;
 
   @Column(name = "SENHA")
   @NotNull
-  private String senha;
+  @Getter @Setter private String senha;
 
   @Column(name = "ATIVO")
-  private boolean ativo;
+  @Getter @Setter private boolean ativo;
 
   @ManyToOne
   @JoinColumn(name = "FK_GRUPO_USUARIO_ID", referencedColumnName = "ID")
-  private GrupoUsuario grupoUsuario;
+  @Getter @Setter private GrupoUsuario grupoUsuario;
 
   @Column(name = "DATA_CADASTRO")
   @Temporal(TemporalType.DATE)
-  private Date dataCadastro;
+  @Getter @Setter private Date dataCadastro;
 
   @Column(name = "DATA_EXPIRACAO")
   @Temporal(TemporalType.DATE)
   @Future
-  private Date dataExpiração;
-
-  public Usuario() {
-  }
+  @Getter @Setter private Date dataExpiração;
 
   public Usuario(String login, String senha, boolean ativo, GrupoUsuario grupoUsuario, Date dataCadastro, Date dataExpiração) {
     this.login = login;
@@ -68,62 +65,6 @@ public class Usuario implements Serializable {
     this.ativo = ativo;
     this.grupoUsuario = grupoUsuario;
     this.dataCadastro = dataCadastro;
-    this.dataExpiração = dataExpiração;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getLogin() {
-    return login;
-  }
-
-  public void setLogin(String login) {
-    this.login = login;
-  }
-
-  public String getSenha() {
-    return senha;
-  }
-
-  public void setSenha(String senha) {
-    this.senha = senha;
-  }
-
-  public boolean isAtivo() {
-    return ativo;
-  }
-
-  public void setAtivo(boolean ativo) {
-    this.ativo = ativo;
-  }
-
-  public GrupoUsuario getGrupoUsuario() {
-    return grupoUsuario;
-  }
-
-  public void setGrupoUsuario(GrupoUsuario grupoUsuario) {
-    this.grupoUsuario = grupoUsuario;
-  }
-
-  public Date getDataCadastro() {
-    return dataCadastro;
-  }
-
-  public void setDataCadastro(Date dataCadastro) {
-    this.dataCadastro = dataCadastro;
-  }
-
-  public Date getDataExpiração() {
-    return dataExpiração;
-  }
-
-  public void setDataExpiração(Date dataExpiração) {
     this.dataExpiração = dataExpiração;
   }
 
