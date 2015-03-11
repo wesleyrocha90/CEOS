@@ -14,12 +14,39 @@
     <!-- Used as the 'Vendor' for JNLP generation -->
     <name>CEOS</name>
   </organization>
-
+  
+  <developers>
+    <developer>
+      <name>Wesley Rocha</name>
+      <email>wesleyallanrocha@gmail.com</email> 
+      <organization>AILog Tecnologia</organization>
+      <roles>
+        <role>Desenvolvedor</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Marco Antonio Tadeu dos Santos Queiros</name>
+      <email>marcoantonio.queiroz@gmail.com</email>
+      <organization>Ophos Soluções e Tecnologia</organization>
+      <roles>
+        <role>Desenvolvedor</role>
+      </roles>
+    </developer>
+  </developers>
+  
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <mainClass>br.com.ceos.main.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- versões das bibliotecas -->
+    <eclipselink.version>2.5.2</eclipselink.version>
+    <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+    <validation-api.version>1.1.0.Final</validation-api.version>
+    <weld.version>2.2.9.Final</weld.version>
+    <lombok.version>1.16.0</lombok.version>
+    <log4j.version>1.2.17</log4j.version>
+    <junit.version>4.12</junit.version>
   </properties>
 
   <build>
@@ -64,30 +91,42 @@
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
-      <version>2.5.2</version>
+      <version>${eclipselink.version}</version>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>9.3-1101-jdbc41</version>
+      <version>${postgresql.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
+      <version>${validation-api.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.weld.se</groupId>
+      <artifactId>weld-se</artifactId>
+      <version>${weld.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
     </dependency>
     
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
+      <version>${log4j.version}</version>
     </dependency>
     
     <!-- Dependências de teste -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
