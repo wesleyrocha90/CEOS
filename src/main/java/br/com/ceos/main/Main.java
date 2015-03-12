@@ -27,7 +27,6 @@ public class Main extends Application {
     Parent root = (Parent) fxmlLoader.load();
     Scene scene = new Scene(root);
     stage.setTitle(BundleUtil.getString("login"));
-    stage.setResizable(false);
     stage.setScene(scene);
     stage.showAndWait();
 
