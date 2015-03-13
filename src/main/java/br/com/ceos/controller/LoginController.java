@@ -2,6 +2,8 @@ package br.com.ceos.controller;
 
 import br.com.ceos.entity.Usuario;
 import br.com.ceos.util.BundleUtil;
+import br.com.ceos.util.Maps;
+import br.com.ceos.util.QueryUtil;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -42,14 +44,9 @@ public class LoginController implements Initializable {
     } else if ("".equals(senha)) {
       erro.setText(BundleUtil.getString("senhaNaoInformada"));
     } else {
-      // TODO: fazer uma classe que providencie o gerenciamento do banco de dados, para evitar código repetido
-      EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
-      EntityManager em = emf.createEntityManager();
-      Query query = em.createNamedQuery("Usuario.findByLoginSenha");
-      query.setParameter("login", login);
-      query.setParameter("senha", senha);
       try {
-        Usuario usuario = (Usuario) query.getSingleResult();
+        Usuario usuario = (Usuario) QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
+                Maps.asMap("login", login, "senha", senha));
         if (usuario.isAtivo() && usuario.getDataExpiração().after(new Date())) {
           loginValido = true;
           erro.getScene().getWindow().hide();
