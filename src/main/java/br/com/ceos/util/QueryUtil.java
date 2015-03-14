@@ -1,5 +1,8 @@
 package br.com.ceos.util;
 
+import br.com.ceos.entity.Cliente;
+import com.uaihebert.uaicriteria.UaiCriteria;
+import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -43,5 +46,10 @@ public class QueryUtil {
       query.setParameter(i, params[i]);
     }
     return query.getSingleResult();
+  }
+  
+  public static UaiCriteria getCriteriaCliente() {
+      UaiCriteria<Cliente> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(entityManager, Cliente.class);
+      return uaiCriteria;
   }
 }
