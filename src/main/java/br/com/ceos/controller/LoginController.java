@@ -5,6 +5,7 @@ import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class LoginController implements Initializable {
       try {
         Usuario usuario = (Usuario) QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
                 Maps.asMap("login", login, "senha", senha));
-        if (usuario.isAtivo() && usuario.getDataExpiração().after(new Date())) {
+        if (usuario.isAtivo() && usuario.getDataExpiração().isAfter(LocalDate.now())) {
           loginValido = true;
           erro.getScene().getWindow().hide();
         } else {
