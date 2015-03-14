@@ -6,6 +6,7 @@
     <class>br.com.ceos.entity.MenuItem</class>
     <class>br.com.ceos.entity.MenuPainel</class>
     <class>br.com.ceos.entity.GrupoUsuario</class>
+    <class>br.com.ceos.util.LocalDatePersistenceConverter</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/ceos"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
