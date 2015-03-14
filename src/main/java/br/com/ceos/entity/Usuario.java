@@ -1,8 +1,11 @@
 package br.com.ceos.entity;
 
+import br.com.ceos.util.LocalDatePersistenceConverter;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -51,15 +54,15 @@ public class Usuario implements Serializable {
   @Getter @Setter private GrupoUsuario grupoUsuario;
 
   @Column(name = "DATA_CADASTRO")
-  @Temporal(TemporalType.DATE)
-  @Getter @Setter private Date dataCadastro;
+  @Convert(converter = LocalDatePersistenceConverter.class)
+  @Getter @Setter private LocalDate dataCadastro;
 
   @Column(name = "DATA_EXPIRACAO")
-  @Temporal(TemporalType.DATE)
+  @Convert(converter = LocalDatePersistenceConverter.class)
   @Future
-  @Getter @Setter private Date dataExpiração;
+  @Getter @Setter private LocalDate dataExpiração;
 
-  public Usuario(String login, String senha, boolean ativo, GrupoUsuario grupoUsuario, Date dataCadastro, Date dataExpiração) {
+  public Usuario(String login, String senha, boolean ativo, GrupoUsuario grupoUsuario, LocalDate dataCadastro, LocalDate dataExpiração) {
     this.login = login;
     this.senha = senha;
     this.ativo = ativo;

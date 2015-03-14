@@ -1,7 +1,10 @@
 package br.com.ceos.entity;
 
+import br.com.ceos.util.LocalDatePersistenceConverter;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
@@ -18,20 +21,20 @@ import lombok.Setter;
 public class EntidadeBase {
 
   @Column(name = "DATA_CRIACAO")
-  @Temporal(TemporalType.DATE)
-  @Getter @Setter private Date dataCriacao;
+  @Convert(converter = LocalDatePersistenceConverter.class)
+  @Getter @Setter private LocalDate dataCriacao;
 
   @Column(name = "DATA_ALTERACAO")
-  @Temporal(TemporalType.DATE)
-  @Getter @Setter private Date dataAlteracao;
+  @Convert(converter = LocalDatePersistenceConverter.class)
+  @Getter @Setter private LocalDate dataAlteracao;
 
   @OneToOne
   @JoinColumn(name = "FK_ID_USUARIO_ALTERACAO", referencedColumnName = "ID")
   @Getter @Setter private Usuario usuarioAlteracao;
 
   @Column(name = "DATA_EXCLUSAO")
-  @Temporal(TemporalType.DATE)
-  @Getter @Setter private Date dataExclusao;
+  @Convert(converter = LocalDatePersistenceConverter.class)
+  @Getter @Setter private LocalDate dataExclusao;
 
   @OneToOne
   @JoinColumn(name = "FK_ID_USUARIO_EXCLUSAO", referencedColumnName = "ID")
