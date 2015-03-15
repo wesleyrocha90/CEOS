@@ -7,19 +7,26 @@ import javax.persistence.Converter;
 
 /**
  * Conversor de LocalDate para SQL Date.
+ *
  * @author Marco
  */
 @Converter(autoApply = true)
 public class LocalDatePersistenceConverter implements AttributeConverter<LocalDate, Date> {
 
-    @Override
-    public java.sql.Date convertToDatabaseColumn(LocalDate entityValue) {
-        return java.sql.Date.valueOf(entityValue);
+  @Override
+  public java.sql.Date convertToDatabaseColumn(LocalDate entityValue) {
+    if (entityValue != null) {
+      return java.sql.Date.valueOf(entityValue);
     }
+    return null;
+  }
 
-    @Override
-    public LocalDate convertToEntityAttribute(java.sql.Date databaseValue) {
-        return databaseValue.toLocalDate();
+  @Override
+  public LocalDate convertToEntityAttribute(java.sql.Date databaseValue) {
+    if (databaseValue != null) {
+      return databaseValue.toLocalDate();
     }
+    return null;
+  }
 
 }

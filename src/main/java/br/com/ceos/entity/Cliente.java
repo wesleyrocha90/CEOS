@@ -1,6 +1,7 @@
 package br.com.ceos.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -66,4 +67,8 @@ public class Cliente extends EntidadeBase implements Serializable {
     
     @Column(name = "EMAIL_COMERCIAL")
     @Getter @Setter private String emailComercial;
+    
+    public Cliente() {
+      super.setDataCriacao(LocalDate.now());
+    }
 }

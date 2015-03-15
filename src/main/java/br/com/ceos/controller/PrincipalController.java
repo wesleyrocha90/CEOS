@@ -19,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javax.persistence.EntityManager;
@@ -56,18 +55,15 @@ public class PrincipalController implements Initializable {
         image.setFitWidth(16);
         image.setPreserveRatio(true);
         button.setGraphic(image);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-          @Override
-          public void handle(ActionEvent event) {
-            try {
-              Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
-              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
-              Parent root = (Parent) fxmlLoader.load();
-              root.setPickOnBounds(true);
-              tab.setContent(root);
-              tabPane.getTabs().add(tab);
-            } catch (IOException ex) {
-            }
+        button.setOnAction((ActionEvent event) -> {
+          try {
+            Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
+            Parent root = (Parent) fxmlLoader.load();
+            root.setPickOnBounds(true);
+            tab.setContent(root);
+            tabPane.getTabs().add(tab);
+          } catch (IOException ex) {
           }
         });
         vbox.getChildren().add(button);

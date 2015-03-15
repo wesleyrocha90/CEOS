@@ -6,7 +6,6 @@ import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 public class LoginController implements Initializable {
 
@@ -48,7 +43,7 @@ public class LoginController implements Initializable {
       try {
         Usuario usuario = (Usuario) QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
                 Maps.asMap("login", login, "senha", senha));
-        if (usuario.isAtivo() && usuario.getDataExpiração().isAfter(LocalDate.now())) {
+        if (usuario.isAtivo() && usuario.getDataExpiracao().isAfter(LocalDate.now())) {
           loginValido = true;
           erro.getScene().getWindow().hide();
         } else {

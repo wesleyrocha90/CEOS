@@ -2,21 +2,17 @@ package br.com.ceos.entity;
 
 import br.com.ceos.util.LocalDatePersistenceConverter;
 import java.time.LocalDate;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @MappedSuperclass
-@NoArgsConstructor
 @AllArgsConstructor
 public class EntidadeBase {
 
@@ -39,4 +35,8 @@ public class EntidadeBase {
   @OneToOne
   @JoinColumn(name = "FK_ID_USUARIO_EXCLUSAO", referencedColumnName = "ID")
   @Getter @Setter private Usuario usuarioExclusao;
+  
+  public EntidadeBase() {
+    dataCriacao = LocalDate.now();
+  }
 }

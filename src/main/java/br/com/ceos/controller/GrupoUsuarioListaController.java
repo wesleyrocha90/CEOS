@@ -3,7 +3,6 @@ package br.com.ceos.controller;
 import br.com.ceos.data.GrupoUsuarioData;
 import br.com.ceos.entity.GrupoUsuario;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -32,9 +31,9 @@ public class GrupoUsuarioListaController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    columnId.setCellValueFactory(new PropertyValueFactory<GrupoUsuarioData, Integer>("id"));
-    columnDescricao.setCellValueFactory(new PropertyValueFactory<GrupoUsuarioData, String>("descricao"));
-    columnDataCadastro.setCellValueFactory(new PropertyValueFactory<GrupoUsuarioData, Date>("dataCadastro"));
+    columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+    columnDataCadastro.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
     dados = FXCollections.observableArrayList();
     tableGrupoUsuario.setItems(dados);
 

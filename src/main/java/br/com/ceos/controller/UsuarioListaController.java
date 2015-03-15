@@ -3,7 +3,6 @@ package br.com.ceos.controller;
 import br.com.ceos.data.UsuarioData;
 import br.com.ceos.entity.Usuario;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -36,11 +35,11 @@ public class UsuarioListaController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    columnId.setCellValueFactory(new PropertyValueFactory<UsuarioData, Integer>("id"));
-    columnLogin.setCellValueFactory(new PropertyValueFactory<UsuarioData, String>("login"));
-    columnAtivo.setCellValueFactory(new PropertyValueFactory<UsuarioData, String>("ativo"));
-    columnDataCadastro.setCellValueFactory(new PropertyValueFactory<UsuarioData, Date>("dataCadastro"));
-    columnDataExpiracao.setCellValueFactory(new PropertyValueFactory<UsuarioData, Date>("dataExpiracao"));
+    columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    columnLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
+    columnAtivo.setCellValueFactory(new PropertyValueFactory<>("ativo"));
+    columnDataCadastro.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
+    columnDataExpiracao.setCellValueFactory(new PropertyValueFactory<>("dataExpiracao"));
     dados = FXCollections.observableArrayList();
     tableUsuario.setItems(dados);
 
