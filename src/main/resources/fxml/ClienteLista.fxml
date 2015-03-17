@@ -10,15 +10,15 @@
 <?import javafx.scene.paint.*?>
 <?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.ceos.controller.ClienteListaController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.ceos.controller.ClienteListaController">
   <children>
-    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-        <TableView editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false">
+        <TableView fx:id="tableCliente" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false">
           <columns>
-            <TableColumn editable="false" prefWidth="125.0" text="%cnpjCpf" />
-            <TableColumn editable="false" minWidth="0.0" prefWidth="337.0" text="%razaoSocial" />
-            <TableColumn editable="false" prefWidth="137.0" text="%telefone" />
+            <TableColumn fx:id="columnCnpjCpf" editable="false" prefWidth="125.0" text="%cnpjCpf" />
+            <TableColumn fx:id="columnRazaoSocial" editable="false" minWidth="0.0" prefWidth="337.0" text="%razaoSocial" />
+            <TableColumn fx:id="columnTelefone" editable="false" prefWidth="137.0" text="%telefone" />
           </columns>
           <BorderPane.margin>
             <Insets fx:id="x1" />

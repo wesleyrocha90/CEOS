@@ -9,7 +9,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,16 +36,14 @@ public class PrincipalController implements Initializable {
     EntityManager em = JPAUtil.getEntityManager();
     Query query = em.createNamedQuery("MenuPainel.findAll");
     List<MenuPainel> menus = query.getResultList();
-    for (MenuPainel menuPainel : menus) {
+    menus.stream().map(menuPainel -> {
       TitledPane titledPane = new TitledPane();
       titledPane.setText(BundleUtil.getString(menuPainel.getTitulo()));
       VBox vbox = new VBox();
-
       Query queryItem = em.createNamedQuery("MenuItem.findAllByMenu");
       queryItem.setParameter("pai", menuPainel);
       List<MenuItem> itens = queryItem.getResultList();
-
-      for (final MenuItem menuItem : itens) {
+      itens.stream().map(menuItem -> {
         Button button = new Button();
         button.setMaxWidth(Double.MAX_VALUE);
         button.setText(BundleUtil.getString(menuItem.getTitulo()));
@@ -55,7 +52,7 @@ public class PrincipalController implements Initializable {
         image.setFitWidth(16);
         image.setPreserveRatio(true);
         button.setGraphic(image);
-        button.setOnAction((ActionEvent event) -> {
+        button.setOnAction(event -> {
           try {
             Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
@@ -64,13 +61,14 @@ public class PrincipalController implements Initializable {
             tab.setContent(root);
             tabPane.getTabs().add(tab);
           } catch (IOException ex) {
+            System.out.println(ex);
           }
         });
-        vbox.getChildren().add(button);
-      }
+        return button;
+      }).forEach(button -> vbox.getChildren().add(button));
       titledPane.setContent(vbox);
-      accordion.getPanes().addAll(titledPane);
-    }
+      return titledPane;
+    }).forEach(titledPane -> accordion.getPanes().addAll(titledPane));
     accordion.setExpandedPane(accordion.getPanes().get(0));
     em.close();
   }

@@ -13,4 +13,5 @@ INSERT INTO menu_painel(ID, TITULO, ORDEM)
 
 INSERT INTO menu_item(ID, TITULO, IMAGEM, FXML_TELA, ORDEM, FK_ID_MENU_PAINEL) 
   VALUES(DEFAULT, 'usuario', 'user_16', 'UsuarioLista', 1, 1),
-        (DEFAULT, 'grupoUsuario', 'users_16', 'GrupoUsuarioLista', 2, 1);
+        (DEFAULT, 'grupoUsuario', 'users_16', 'GrupoUsuarioLista', 2, 1),
+        (DEFAULT, 'cliente', 'users_16', 'ClienteLista', 3, 1);

@@ -7,6 +7,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -28,6 +29,7 @@ public class Main extends Application {
     Scene scene = new Scene(root);
     stage.setTitle(BundleUtil.getString("login"));
     stage.setScene(scene);
+    stage.getIcons().add(new Image(getClass().getResource("/icons/" + "CEOS_16.png").toString()));
     stage.showAndWait();
 
     LoginController loginController = (LoginController) fxmlLoader.getController();
@@ -41,6 +43,7 @@ public class Main extends Application {
     stage.setTitle(BundleUtil.getString("principal"));
     stage.setMaximized(true);
     stage.setScene(scene);
+    stage.getIcons().add(new Image(getClass().getResource("/icons/" + "CEOS_16.png").toString()));
     stage.show();
   }
 }
