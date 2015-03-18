@@ -1,6 +1,6 @@
 package br.com.ceos.entity;
 
-import br.com.ceos.util.LocalDatePersistenceConverter;
+import br.com.ceos.convert.LocalDatePersistenceConverter;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Convert;

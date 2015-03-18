@@ -3,12 +3,12 @@ package br.com.ceos.controller;
 import br.com.ceos.entity.MenuItem;
 import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
-import br.com.ceos.util.JPAUtil;
+import br.com.ceos.util.Maps;
+import br.com.ceos.util.QueryUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,8 +20,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 public class PrincipalController implements Initializable {
 
@@ -33,16 +31,13 @@ public class PrincipalController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    EntityManager em = JPAUtil.getEntityManager();
-    Query query = em.createNamedQuery("MenuPainel.findAll");
-    List<MenuPainel> menus = query.getResultList();
+    List<MenuPainel> menus = QueryUtil.selectListByNamedQuery("MenuPainel.findAll");
     menus.stream().map(menuPainel -> {
       TitledPane titledPane = new TitledPane();
       titledPane.setText(BundleUtil.getString(menuPainel.getTitulo()));
       VBox vbox = new VBox();
-      Query queryItem = em.createNamedQuery("MenuItem.findAllByMenu");
-      queryItem.setParameter("pai", menuPainel);
-      List<MenuItem> itens = queryItem.getResultList();
+      List<MenuItem> itens = QueryUtil.selectListByNamedQuery("MenuItem.findAllByMenu", 
+              Maps.asMap("pai", menuPainel));
       itens.stream().map(menuItem -> {
         Button button = new Button();
         button.setMaxWidth(Double.MAX_VALUE);
@@ -55,11 +50,21 @@ public class PrincipalController implements Initializable {
         button.setOnAction(event -> {
           try {
             Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
-            Parent root = (Parent) fxmlLoader.load();
-            root.setPickOnBounds(true);
-            tab.setContent(root);
-            tabPane.getTabs().add(tab);
+            boolean temTabua = false;
+            for (Tab tabua : tabPane.getTabs()) {
+              if(tabua.getText().equals(tab.getText())){
+                tabPane.getSelectionModel().select(tabua);
+                temTabua = true;
+              }
+            }
+            if(!temTabua){
+              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
+              Parent root = (Parent) fxmlLoader.load();
+              root.setPickOnBounds(true);
+              tab.setContent(root);
+              tabPane.getTabs().add(tab);
+              tabPane.getSelectionModel().select(tab);
+            }
           } catch (IOException ex) {
             System.out.println(ex);
           }
@@ -70,6 +75,5 @@ public class PrincipalController implements Initializable {
       return titledPane;
     }).forEach(titledPane -> accordion.getPanes().addAll(titledPane));
     accordion.setExpandedPane(accordion.getPanes().get(0));
-    em.close();
   }
 }

@@ -12,7 +12,7 @@
   <children>
     <ToolBar orientation="HORIZONTAL" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
-        <Button mnemonicParsing="false" text="%salvar">
+        <Button fx:id="salvar" mnemonicParsing="false" onAction="#onSalvarAction" text="%salvar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -21,7 +21,7 @@
             </ImageView>
           </graphic>
         </Button>
-        <Button mnemonicParsing="false" text="%salvarEFechar">
+        <Button fx:id="salvarEFechar" mnemonicParsing="false" onAction="#onSalvarEFecharAction" text="%salvarEFechar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -30,7 +30,7 @@
             </ImageView>
           </graphic>
         </Button>
-        <Button mnemonicParsing="false" text="%cancelar">
+        <Button fx:id="cancelar" mnemonicParsing="false" onAction="#onCancelarAction" text="%cancelar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -46,11 +46,9 @@
         <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
             <Label text="%codigo" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="6.0" />
-            <TextField prefWidth="100.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="22.0" />
-            <TextField prefWidth="362.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="22.0" />
+            <TextField fx:id="codigo" prefWidth="100.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="22.0" />
+            <TextField fx:id="descricao" prefWidth="362.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="22.0" />
             <Label text="%descricao" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="6.0" />
-            <TextField prefWidth="100.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="22.0" />
-            <Label text="%dataDeCadastro" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="6.0" />
           </children>
         </AnchorPane>
       </content>

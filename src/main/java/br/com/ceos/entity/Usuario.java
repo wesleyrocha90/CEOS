@@ -1,6 +1,6 @@
 package br.com.ceos.entity;
 
-import br.com.ceos.util.LocalDatePersistenceConverter;
+import br.com.ceos.convert.LocalDatePersistenceConverter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -76,6 +76,4 @@ public class Usuario extends EntidadeBase implements Serializable {
     s.append("]");
     return s.toString();
   }
-  
-  
 }

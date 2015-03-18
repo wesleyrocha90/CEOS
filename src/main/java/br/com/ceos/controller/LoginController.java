@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
       erro.setText(BundleUtil.getString("senhaNaoInformada"));
     } else {
       try {
-        Usuario usuario = (Usuario) QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
+        Usuario usuario = QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
                 Maps.asMap("login", login, "senha", senha));
         if (usuario.isAtivo() && usuario.getDataExpiracao().isAfter(LocalDate.now())) {
           loginValido = true;

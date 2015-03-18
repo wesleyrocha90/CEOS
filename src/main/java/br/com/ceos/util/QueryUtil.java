@@ -4,6 +4,7 @@ import br.com.ceos.entity.Cliente;
 import com.uaihebert.uaicriteria.UaiCriteria;
 import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -28,8 +29,13 @@ public class QueryUtil {
     }
     return entityManager;
   }
-
-  public static Object selectSingleByNamedQuery(String queryName, Map<String, Object> map) {
+  
+  public static <T> List<T> selectListByNamedQuery(String queryName){
+    Query query = getEntityManager().createNamedQuery(queryName);
+    return (List<T>)query.getResultList();
+  }
+  
+  public static <T> List<T> selectListByNamedQuery(String queryName, Map<String, Object> map) {
     Query query = getEntityManager().createNamedQuery(queryName);
     Set<Entry<String, Object>> set = map.entrySet();
     Iterator<Entry<String, Object>> ite = set.iterator();
@@ -37,15 +43,23 @@ public class QueryUtil {
       Entry<String, Object> entry = ite.next();
       query.setParameter(entry.getKey(), entry.getValue());
     }
-    return query.getSingleResult();
+    return (List<T>)query.getResultList();
+  }
+  
+  public static <T> T selectSingleByNamedQuery(String queryName){
+    Query query = getEntityManager().createNamedQuery(queryName);
+    return (T)query.getSingleResult();
   }
 
-  public static Object selectSingleByNamedQuery(String queryName, Object... params) {
+  public static <T> T selectSingleByNamedQuery(String queryName, Map<String, Object> map) {
     Query query = getEntityManager().createNamedQuery(queryName);
-    for (int i = 0; i < params.length; i++) {
-      query.setParameter(i, params[i]);
+    Set<Entry<String, Object>> set = map.entrySet();
+    Iterator<Entry<String, Object>> ite = set.iterator();
+    while (ite.hasNext()) {
+      Entry<String, Object> entry = ite.next();
+      query.setParameter(entry.getKey(), entry.getValue());
     }
-    return query.getSingleResult();
+    return (T)query.getSingleResult();
   }
 
   public static UaiCriteria getCriteriaCliente() {
