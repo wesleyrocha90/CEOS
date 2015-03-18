@@ -64,6 +64,8 @@ public class PrincipalController implements Initializable {
               tab.setContent(root);
               tabPane.getTabs().add(tab);
               tabPane.getSelectionModel().select(tab);
+              ((ControllerBase)fxmlLoader.getController()).setTabPanePrincipal(tabPane);
+              ((ControllerBase)fxmlLoader.getController()).setTabPrincipal(tab);
             }
           } catch (IOException ex) {
             System.out.println(ex);

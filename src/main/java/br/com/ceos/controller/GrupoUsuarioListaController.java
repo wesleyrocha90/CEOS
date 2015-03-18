@@ -1,7 +1,9 @@
 package br.com.ceos.controller;
 
 import br.com.ceos.entity.GrupoUsuario;
+import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.QueryUtil;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
@@ -9,12 +11,14 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class GrupoUsuarioListaController implements Initializable {
+public class GrupoUsuarioListaController extends ControllerBase implements Initializable {
 
   @FXML
   private TableView<GrupoUsuario> tableGrupoUsuario;
@@ -39,8 +43,14 @@ public class GrupoUsuarioListaController implements Initializable {
     
     tableGrupoUsuario.onMouseClickedProperty().set(event -> {
       if(event.getClickCount() >= 2){
-        GrupoUsuario grupoUsuario = tableGrupoUsuario.getSelectionModel().getSelectedItem();
-        System.out.println(grupoUsuario);
+        try {
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GrupoUsuarioCadastro.fxml"), BundleUtil.getBundle());
+          Parent root = (Parent) fxmlLoader.load();
+          root.setPickOnBounds(true);
+          getTabPrincipal().setContent(root);
+        } catch (IOException ex) {
+          System.out.println(ex);
+        }
       }
     });
   }
