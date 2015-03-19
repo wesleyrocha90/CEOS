@@ -6,30 +6,35 @@ import javafx.scene.control.Button;
 import lombok.AccessLevel;
 import lombok.Setter;
 
-public class AbstractCadastroController {
-  
+public abstract class AbstractCadastroController<E> {
+
   @Setter(AccessLevel.PACKAGE)
-  ListViewController controller;
+  private ListViewController controller;
   
+  private ListViewDataModel<E> dataModel;
+
   @FXML
   private Button botaoSalvar;
   @FXML
   private Button botaoSalvarEFechar;
   @FXML
   private Button botaoCancelar;
-  
+
+  public abstract void salvar();
+
   @FXML
-  public void onSalvarAction(ActionEvent event){
-    System.out.println("Salvando um item");
+  public void onSalvarAction(ActionEvent event) {
+    salvar();
   }
-  
+
   @FXML
-  public void onSalvarEFecharAction(ActionEvent event){
-    System.out.println("Salvando um item e fechando");
+  public void onSalvarEFecharAction(ActionEvent event) {
+    salvar();
+    onCancelarAction(event);
   }
-  
+
   @FXML
-  public void onCancelarAction(ActionEvent event){
-    System.out.println("Cancelando a edição");
+  public void onCancelarAction(ActionEvent event) {
+    controller.changeToList();
   }
 }

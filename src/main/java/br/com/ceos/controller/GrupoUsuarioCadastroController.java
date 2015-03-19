@@ -1,13 +1,14 @@
 package br.com.ceos.controller;
 
 import br.com.ceos.controller.flow.AbstractCadastroController;
+import br.com.ceos.entity.GrupoUsuario;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class GrupoUsuarioCadastroController extends AbstractCadastroController implements Initializable {
+public class GrupoUsuarioCadastroController extends AbstractCadastroController<GrupoUsuario> implements Initializable {
   
   @FXML
   private TextField codigo;
@@ -17,5 +18,10 @@ public class GrupoUsuarioCadastroController extends AbstractCadastroController i
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     descricao.requestFocus();
+  }
+
+  @Override
+  public void salvar() {
+    
   }
 }
