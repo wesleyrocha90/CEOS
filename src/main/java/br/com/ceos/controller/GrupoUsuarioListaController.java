@@ -1,24 +1,19 @@
 package br.com.ceos.controller;
 
+import br.com.ceos.controller.flow.AbstractListaController;
 import br.com.ceos.entity.GrupoUsuario;
-import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.QueryUtil;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class GrupoUsuarioListaController extends ControllerBase implements Initializable {
+public class GrupoUsuarioListaController extends AbstractListaController<GrupoUsuario> implements Initializable {
 
   @FXML
   private TableView<GrupoUsuario> tableGrupoUsuario;
@@ -28,30 +23,15 @@ public class GrupoUsuarioListaController extends ControllerBase implements Initi
   private TableColumn<GrupoUsuario, String> columnDescricao;
   @FXML
   private TableColumn<GrupoUsuario, LocalDate> columnDataCadastro;
-  private ObservableList dados;
-
+  
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
     columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
     columnDataCadastro.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
-    dados = FXCollections.observableArrayList();
-    tableGrupoUsuario.setItems(dados);
+    tableGrupoUsuario.setItems(getDados());
 
     List<GrupoUsuario> grupoUsuarioLista = QueryUtil.selectListByNamedQuery("GrupoUsuario.findAll");
-    dados.addAll(grupoUsuarioLista);
-    
-    tableGrupoUsuario.onMouseClickedProperty().set(event -> {
-      if(event.getClickCount() >= 2){
-        try {
-          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GrupoUsuarioCadastro.fxml"), BundleUtil.getBundle());
-          Parent root = (Parent) fxmlLoader.load();
-          root.setPickOnBounds(true);
-          getTabPrincipal().setContent(root);
-        } catch (IOException ex) {
-          System.out.println(ex);
-        }
-      }
-    });
+    getDados().addAll(grupoUsuarioLista);
   }
 }
