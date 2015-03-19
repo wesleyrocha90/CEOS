@@ -14,27 +14,26 @@ import lombok.Setter;
 @Table(name = "ENDERECO")
 public class Endereco extends EntidadeBase implements Serializable {
   
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ENDERECO_ID")
-    @Getter @Setter private Long id;
-  
-    @Column(name = "LOGRADOURO")
-    @Getter @Setter private String logradouro;
-    
-    @Column(name = "COMPLEMENTO")
-    @Getter @Setter private String complemento;
-    
-    @Column(name = "NUMERO")
-    @Getter @Setter private String numero;
-    
-    @Column(name = "BAIRRO")
-    @Getter @Setter private String bairro;
-    
-    @Column(name = "MUNICIPIO")
-    @Getter @Setter private String municipio;
-    
-    @Column(name = "UF")
-    @Getter @Setter private String uf;
-  
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "ID")
+  @Getter @Setter private Long id;
+
+  @Column(name = "LOGRADOURO")
+  @Getter @Setter private String logradouro;
+
+  @Column(name = "NUMERO")
+  @Getter @Setter private String numero;
+
+  @Column(name = "COMPLEMENTO")
+  @Getter @Setter private String complemento;
+
+  @Column(name = "BAIRRO")
+  @Getter @Setter private String bairro;
+
+  @Column(name = "CEP")
+  @Getter @Setter private String cep;
+
+  @Column(name = "MUNICIPIO")
+  @Getter @Setter private String municipio;
 }

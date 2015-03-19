@@ -20,6 +20,7 @@ public class ClienteManager {
   }
   
   public List<Cliente> findAll() {
+    // FIXME Marco coloca um breakpoint nessa linha e depura porque tem erro aqui
     UaiCriteria<Cliente> criteria = QueryUtil.getCriteriaCliente();
     return criteria.getResultList();
   }

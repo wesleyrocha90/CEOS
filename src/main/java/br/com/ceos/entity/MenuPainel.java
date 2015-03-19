@@ -24,7 +24,7 @@ public class MenuPainel implements Serializable {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Getter @Setter private Integer id;
+  @Getter @Setter private Long id;
 
   @Column(name = "TITULO")
   @Getter @Setter private String titulo;

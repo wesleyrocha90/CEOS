@@ -20,7 +20,7 @@ public class Telefone extends EntidadeBase implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "TELEFONE_ID")
+  @Column(name = "ID")
   @Getter @Setter private Long id;
   
   @Column(name = "DDD")
