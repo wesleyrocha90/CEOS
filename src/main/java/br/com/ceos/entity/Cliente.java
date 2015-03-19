@@ -2,65 +2,31 @@ package br.com.ceos.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "CLIENTE")
+@MappedSuperclass
 public class Cliente extends EntidadeBase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "CLIENTE_ID")
     @Getter @Setter private Long id;
     
-    @Column(name = "RAZAO_SOCIAL")
-    @Getter @Setter private String razaoSocial;
-    
-    @Column(name = "NOME_FANTASIA")
-    @Getter @Setter private String nomeFantasia;
-    
-    @Column(name = "CNPJ_CPF", unique = true)
-    @Getter @Setter private String cnpjCpf;
-    
-    @Column(name = "IE")
-    @Getter @Setter private String inscricaoEstadual;
-    
-    @Column(name = "IM")
-    @Getter @Setter private String inscricaoMunicipal;
-    
-    @Column(name = "LOGRADOURO")
-    @Getter @Setter private String logradouro;
-    
-    @Column(name = "COMPLEMENTO")
-    @Getter @Setter private String complemento;
-    
-    @Column(name = "NUMERO")
-    @Getter @Setter private String numero;
-    
-    @Column(name = "BAIRRO")
-    @Getter @Setter private String bairro;
-    
-    @Column(name = "MUNICIPIO")
-    @Getter @Setter private String municipio;
-    
-    @Column(name = "UF")
-    @Getter @Setter private String uf;
-    
-    @Column(name = "TELEFONE")
-    @Getter @Setter private String telefone;
-    
-    @Column(name = "CELULAR")
-    @Getter @Setter private String celular;
-    
-    @Column(name = "TELEFONE_COMERCIAL")
-    @Getter @Setter private String telefoneComercial;
+    @Column(name = "ATIVO")
+    @Getter @Setter private Boolean ativo;
     
     @Column(name = "EMAIL")
     @Getter @Setter private String email;
@@ -68,7 +34,35 @@ public class Cliente extends EntidadeBase implements Serializable {
     @Column(name = "EMAIL_COMERCIAL")
     @Getter @Setter private String emailComercial;
     
+    @OneToMany
+    @JoinColumn(name = "FK_ENDERECOS", referencedColumnName = "ENDERECO_ID")
+    @Setter private Collection<Endereco> enderecos;
+    
+    @OneToMany
+    @JoinColumn(name = "FK_TELEFONES", referencedColumnName = "TELEFONE_ID")
+    @Setter private Collection<Telefone> telefones;
+    
+    @Embedded
+    @Getter @Setter private ClienteFisico clienteFisico;
+    
+    @Embedded
+    @Getter @Setter private ClienteJuridico clienteJuridico;
+
     public Cliente() {
       super.setDataCriacao(LocalDate.now());
     }
+
+  public Collection<Endereco> getEnderecos() {
+    if (enderecos == null) {
+      enderecos = new ArrayList<>();
+    }
+    return enderecos;
+  }
+
+  public Collection<Telefone> getTelefones() {
+    if (telefones == null) {
+      telefones = new ArrayList<>();
+    }
+    return telefones;
+  }
 }

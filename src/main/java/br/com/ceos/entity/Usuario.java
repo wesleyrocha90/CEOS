@@ -33,7 +33,7 @@ public class Usuario extends EntidadeBase implements Serializable {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Getter @Setter private int id;
+  @Getter @Setter private Long id;
 
   @Column(name = "LOGIN")
   @NotNull
@@ -44,7 +44,7 @@ public class Usuario extends EntidadeBase implements Serializable {
   @Getter @Setter private String senha;
 
   @Column(name = "ATIVO")
-  @Getter @Setter private boolean ativo;
+  @Getter @Setter private Boolean ativo;
 
   @ManyToOne
   @JoinColumn(name = "FK_GRUPO_USUARIO_ID", referencedColumnName = "ID")
@@ -55,7 +55,7 @@ public class Usuario extends EntidadeBase implements Serializable {
   @Future
   @Getter @Setter private LocalDate dataExpiracao;
 
-  public Usuario(String login, String senha, boolean ativo, GrupoUsuario grupoUsuario, LocalDate dataExpiração) {
+  public Usuario(String login, String senha, Boolean ativo, GrupoUsuario grupoUsuario, LocalDate dataExpiração) {
     this.login = login;
     this.senha = senha;
     this.ativo = ativo;

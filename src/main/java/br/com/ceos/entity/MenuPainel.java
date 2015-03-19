@@ -24,11 +24,11 @@ public class MenuPainel implements Serializable {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Getter @Setter private int id;
+  @Getter @Setter private Integer id;
 
   @Column(name = "TITULO")
   @Getter @Setter private String titulo;
 
   @Column(name = "ORDEM")
-  @Getter @Setter private int ordem;
+  @Getter @Setter private Integer ordem;
 }

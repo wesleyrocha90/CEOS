@@ -26,7 +26,7 @@ public class MenuItem implements Serializable {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Getter @Setter private int id;
+  @Getter @Setter private Long id;
 
   @Column(name = "TITULO")
   @Getter @Setter private String titulo;
@@ -42,5 +42,5 @@ public class MenuItem implements Serializable {
   @Getter @Setter private MenuPainel pai;
 
   @Column(name = "ORDEM")
-  @Getter @Setter private int ordem;
+  @Getter @Setter private Integer ordem;
 }

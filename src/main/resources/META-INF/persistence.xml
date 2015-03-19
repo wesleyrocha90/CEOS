@@ -3,13 +3,16 @@
   <persistence-unit name="persistence" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.com.ceos.entity.Usuario</class>
-    <class>br.com.ceos.entity.Cliente</class>
+    <class>br.com.ceos.entity.ClienteFisico</class>
+    <class>br.com.ceos.entity.ClienteJuridico</class>
+    <class>br.com.ceos.entity.Telefone</class>
+    <class>br.com.ceos.entity.Endereco</class>
     <class>br.com.ceos.entity.MenuItem</class>
     <class>br.com.ceos.entity.MenuPainel</class>
     <class>br.com.ceos.entity.GrupoUsuario</class>
     <class>br.com.ceos.convert.LocalDatePersistenceConverter</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ceos"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/ceos"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="wrmq6557"/>
