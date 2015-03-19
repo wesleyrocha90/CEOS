@@ -3,8 +3,13 @@ package br.com.ceos.controller.flow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import lombok.AccessLevel;
+import lombok.Setter;
 
 public class AbstractCadastroController {
+  
+  @Setter(AccessLevel.PACKAGE)
+  ListViewController controller;
   
   @FXML
   private Button botaoSalvar;

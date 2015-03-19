@@ -9,7 +9,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-public class AbstractListaController<E> {
+public abstract class AbstractListaController<E> {
+  
+  @Setter(AccessLevel.PACKAGE)
+  ListViewController controller;
   
   @Getter(AccessLevel.PROTECTED)
   @Setter(AccessLevel.PROTECTED)
@@ -20,7 +23,7 @@ public class AbstractListaController<E> {
   
   @FXML 
   private void onCriarNovoAction(ActionEvent event){
-    System.out.println("Criando um item");
+    controller.changeToEdit();
   }
   
   @FXML
