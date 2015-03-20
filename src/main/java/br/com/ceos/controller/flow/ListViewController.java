@@ -5,11 +5,11 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
-import javax.annotation.PostConstruct;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+@Deprecated
 public class ListViewController {
   
   @Getter(AccessLevel.PUBLIC)

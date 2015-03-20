@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.ceos.controller.GrupoUsuarioCadastroController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" >
   <children>
     <ToolBar orientation="HORIZONTAL" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
-        <Button fx:id="salvar" mnemonicParsing="false" onAction="#onSalvarAction" text="%salvar">
+        <Button fx:id="botaoSalvar" mnemonicParsing="false" text="%salvar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -21,7 +21,7 @@
             </ImageView>
           </graphic>
         </Button>
-        <Button fx:id="salvarEFechar" mnemonicParsing="false" onAction="#onSalvarEFecharAction" text="%salvarEFechar">
+        <Button fx:id="botaoSalvarEFechar" mnemonicParsing="false" text="%salvarEFechar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -30,7 +30,7 @@
             </ImageView>
           </graphic>
         </Button>
-        <Button fx:id="cancelar" mnemonicParsing="false" onAction="#onCancelarAction" text="%cancelar">
+        <Button fx:id="botaoCancelar" mnemonicParsing="false" text="%cancelar">
           <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

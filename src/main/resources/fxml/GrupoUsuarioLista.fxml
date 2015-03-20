@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.ceos.controller.GrupoUsuarioListaController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
   <children>
     <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -52,7 +52,7 @@
                 <Tooltip text="%cancelarFiltro" />
               </tooltip>
             </Button>
-            <Button fx:id="botaoCriarNovo" contentDisplay="GRAPHIC_ONLY" layoutX="340.0" layoutY="6.0" minWidth="37.0" mnemonicParsing="false" onAction="#onCriarNovoAction" prefHeight="37.0" prefWidth="37.0" text="">
+            <Button fx:id="botaoCriarNovo" contentDisplay="GRAPHIC_ONLY" layoutX="340.0" layoutY="6.0" minWidth="37.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="37.0" text="">
               <graphic>
                 <ImageView fitHeight="32.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                   <image>

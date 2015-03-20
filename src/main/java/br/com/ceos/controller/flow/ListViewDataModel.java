@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import lombok.NonNull;
 
+@Deprecated
 public class ListViewDataModel<E> {
   
   private ObservableList<E> dados;
