@@ -17,23 +17,30 @@ public class ClienteListaController implements Initializable {
   @FXML
   private TableView<ClienteData> tableCliente;
   @FXML
-  private TableColumn columnCnpjCpf;
+  private TableColumn columnCnpj;
+  @FXML
+  private TableColumn columnCpf;
   @FXML
   private TableColumn columnRazaoSocial;
+  @FXML
+  private TableColumn columnNome;
   @FXML
   private TableColumn columnTelefone;
   private ObservableList result;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    columnCnpjCpf.setCellValueFactory(new PropertyValueFactory<>("cnpjCpf"));
+    columnCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+    columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
     columnRazaoSocial.setCellValueFactory(new PropertyValueFactory<>("razaoSocial"));
+    columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
     columnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
     result = FXCollections.observableArrayList();
     tableCliente.setItems(result);
     
     ClienteManager manager = new ClienteManager();
-    result.addAll(manager.findAll());
+    result.addAll(manager.findAllClienteFisico());
+    result.addAll(manager.findAllClienteJuridico());
   }
 
 }

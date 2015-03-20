@@ -5,12 +5,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 

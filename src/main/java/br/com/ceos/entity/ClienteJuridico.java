@@ -3,10 +3,13 @@ package br.com.ceos.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Embeddable
+@Entity
+@Table(name = "CLIENTE_JURIDICO")
 public class ClienteJuridico extends Cliente implements Serializable {
 
   @Column(name = "RAZAO_SOCIAL")

@@ -1,6 +1,8 @@
 package br.com.ceos.util;
 
 import br.com.ceos.entity.Cliente;
+import br.com.ceos.entity.ClienteFisico;
+import br.com.ceos.entity.ClienteJuridico;
 import com.uaihebert.uaicriteria.UaiCriteria;
 import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 import java.util.Iterator;
@@ -29,12 +31,12 @@ public class QueryUtil {
     }
     return entityManager;
   }
-  
-  public static <T> List<T> selectListByNamedQuery(String queryName){
+
+  public static <T> List<T> selectListByNamedQuery(String queryName) {
     Query query = getEntityManager().createNamedQuery(queryName);
-    return (List<T>)query.getResultList();
+    return (List<T>) query.getResultList();
   }
-  
+
   public static <T> List<T> selectListByNamedQuery(String queryName, Map<String, Object> map) {
     Query query = getEntityManager().createNamedQuery(queryName);
     Set<Entry<String, Object>> set = map.entrySet();
@@ -43,12 +45,12 @@ public class QueryUtil {
       Entry<String, Object> entry = ite.next();
       query.setParameter(entry.getKey(), entry.getValue());
     }
-    return (List<T>)query.getResultList();
+    return (List<T>) query.getResultList();
   }
-  
-  public static <T> T selectSingleByNamedQuery(String queryName){
+
+  public static <T> T selectSingleByNamedQuery(String queryName) {
     Query query = getEntityManager().createNamedQuery(queryName);
-    return (T)query.getSingleResult();
+    return (T) query.getSingleResult();
   }
 
   public static <T> T selectSingleByNamedQuery(String queryName, Map<String, Object> map) {
@@ -59,11 +61,16 @@ public class QueryUtil {
       Entry<String, Object> entry = ite.next();
       query.setParameter(entry.getKey(), entry.getValue());
     }
-    return (T)query.getSingleResult();
+    return (T) query.getSingleResult();
   }
 
-  public static UaiCriteria getCriteriaCliente() {
-    UaiCriteria<Cliente> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(entityManager, Cliente.class);
+  public static UaiCriteria getCriteriaClienteFisico() {
+    UaiCriteria<ClienteFisico> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(entityManager, ClienteFisico.class);
+    return uaiCriteria;
+  }
+
+  public static UaiCriteria getCriteriaClienteJuridico() {
+    UaiCriteria<ClienteJuridico> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(entityManager, ClienteJuridico.class);
     return uaiCriteria;
   }
 }
