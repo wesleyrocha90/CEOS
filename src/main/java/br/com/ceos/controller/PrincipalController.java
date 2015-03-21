@@ -1,6 +1,7 @@
 package br.com.ceos.controller;
 
 import br.com.ceos.controller.flow.FlowI18n;
+import br.com.ceos.controller.flow.RemoveActionTask;
 import br.com.ceos.entity.MenuItem;
 import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
@@ -65,8 +66,10 @@ public class PrincipalController implements Initializable {
               ViewConfiguration viewConfiguration = new ViewConfiguration();
               viewConfiguration.setResources(BundleUtil.getBundle());
               Flow flow = new FlowI18n(GrupoUsuarioListaController.class, viewConfiguration)
-                  .withLink(GrupoUsuarioListaController.class, "criarNovo", GrupoUsuarioCadastroController.class)
-                  .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class);
+                  .withLink(GrupoUsuarioListaController.class, "criar", GrupoUsuarioCadastroController.class)
+                  .withLink(GrupoUsuarioListaController.class, "editar", GrupoUsuarioCadastroController.class)
+                  .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class)
+                  .withTaskAction(GrupoUsuarioListaController.class, "excluir", RemoveActionTask.class);
               
               tab.setContent(flow.start());
               tabPane.getTabs().add(tab);

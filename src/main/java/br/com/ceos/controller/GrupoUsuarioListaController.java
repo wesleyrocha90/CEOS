@@ -1,26 +1,23 @@
 package br.com.ceos.controller;
 
+import br.com.ceos.controller.flow.DataModelFlow;
 import br.com.ceos.entity.GrupoUsuario;
-import br.com.ceos.util.QueryUtil;
-import java.net.URL;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import org.datafx.controller.FXMLController;
 import org.datafx.controller.flow.action.ActionTrigger;
 
 @FXMLController("/fxml/GrupoUsuarioLista.fxml")
-public class GrupoUsuarioListaController implements Initializable {
+public class GrupoUsuarioListaController {
 
   @FXML
+  @ActionTrigger("editar")
   private TableView<GrupoUsuario> tableGrupoUsuario;
   @FXML
   private TableColumn<GrupoUsuario, Integer> columnId;
@@ -30,18 +27,23 @@ public class GrupoUsuarioListaController implements Initializable {
   private TableColumn<GrupoUsuario, LocalDate> columnDataCadastro;
   
   @FXML
-  @ActionTrigger("criarNovo")
+  @ActionTrigger("criar")
   private Button botaoCriarNovo;
   
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
+  @FXML
+  @ActionTrigger("excluir")
+  private Button botaoExcluir;
+  
+  @Inject
+  private DataModelFlow model;
+  
+  @PostConstruct
+  public void init() {
     columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
     columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
     columnDataCadastro.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
-    ObservableList<GrupoUsuario> dados = FXCollections.observableArrayList();
-    tableGrupoUsuario.setItems(dados);
-
-    List<GrupoUsuario> grupoUsuarioLista = QueryUtil.selectListByNamedQuery("GrupoUsuario.findAll");
-    dados.addAll(grupoUsuarioLista);
+    
+    tableGrupoUsuario.itemsProperty().bind(model.getData());
+    model.selecteDataIndexProperty().bind(tableGrupoUsuario.getSelectionModel().selectedIndexProperty());
   }
 }
