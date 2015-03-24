@@ -2,15 +2,15 @@ package br.com.ceos.controller;
 
 import br.com.ceos.controller.flow.DataModelFlow;
 import br.com.ceos.entity.GrupoUsuario;
+import io.datafx.controller.ViewController;
+import io.datafx.controller.flow.action.ActionTrigger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.datafx.controller.FXMLController;
-import org.datafx.controller.flow.action.ActionTrigger;
 
-@FXMLController("/fxml/GrupoUsuarioCadastro.fxml")
+@ViewController("/fxml/GrupoUsuarioCadastro.fxml")
 public class GrupoUsuarioCadastroController {
   
   @FXML

@@ -47,7 +47,7 @@
     <lombok.version>1.14.0</lombok.version>
     <log4j.version>1.2.17</log4j.version>
     <uaicriteria.version>4.0.0</uaicriteria.version>
-    <datafx.version>8.0.7</datafx.version>
+    <datafx.version>8.0.1</datafx.version>
     <annotation-api.version>1.2</annotation-api.version>
     <inject.version>1</inject.version>
     <!-- versões das bibliotecas de teste -->
@@ -138,6 +138,11 @@
     <dependency>
       <groupId>io.datafx</groupId>
       <artifactId>flow</artifactId>
+      <version>${datafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.datafx</groupId>
+      <artifactId>injection</artifactId>
       <version>${datafx.version}</version>
     </dependency>
     <dependency>

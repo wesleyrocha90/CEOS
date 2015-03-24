@@ -2,13 +2,13 @@ package br.com.ceos.controller.flow;
 
 import br.com.ceos.entity.GrupoUsuario;
 import br.com.ceos.util.QueryUtil;
+import io.datafx.controller.injection.scopes.FlowScoped;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.datafx.controller.flow.injection.FlowScoped;
 
 @FlowScoped
 public class DataModelFlow {

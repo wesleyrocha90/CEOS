@@ -7,6 +7,9 @@ import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
+import io.datafx.controller.ViewConfiguration;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,9 +22,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import org.datafx.controller.ViewConfiguration;
-import org.datafx.controller.flow.Flow;
-import org.datafx.controller.flow.FlowException;
 
 public class PrincipalController implements Initializable {
 

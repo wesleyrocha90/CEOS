@@ -2,6 +2,9 @@ package br.com.ceos.controller;
 
 import br.com.ceos.controller.flow.DataModelFlow;
 import br.com.ceos.entity.GrupoUsuario;
+import io.datafx.controller.ViewController;
+import io.datafx.controller.flow.action.ActionMethod;
+import io.datafx.controller.flow.action.ActionTrigger;
 import java.time.LocalDate;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,10 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.datafx.controller.FXMLController;
-import org.datafx.controller.flow.action.ActionTrigger;
 
-@FXMLController("/fxml/GrupoUsuarioLista.fxml")
+@ViewController("/fxml/GrupoUsuarioLista.fxml")
 public class GrupoUsuarioListaController {
 
   @FXML
@@ -36,6 +37,11 @@ public class GrupoUsuarioListaController {
   
   @Inject
   private DataModelFlow model;
+  
+  @ActionMethod("criar")
+  private void onBotaoCriarNovoAction(){
+    tableGrupoUsuario.getSelectionModel().clearSelection();
+  };
   
   @PostConstruct
   public void init() {
