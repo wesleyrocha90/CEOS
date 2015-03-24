@@ -3,16 +3,8 @@ package br.com.ceos.controller.flow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import lombok.AccessLevel;
-import lombok.Setter;
 
 public abstract class AbstractCadastroController<E> {
-
-  @Setter(AccessLevel.PACKAGE)
-  private ListViewController controller;
-  
-  private ListViewDataModel<E> dataModel;
-
   @FXML
   private Button botaoSalvar;
   @FXML
@@ -35,6 +27,5 @@ public abstract class AbstractCadastroController<E> {
 
   @FXML
   public void onCancelarAction(ActionEvent event) {
-    controller.changeToList();
   }
 }

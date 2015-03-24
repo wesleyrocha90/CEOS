@@ -9,26 +9,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <center>
-        <TableView editable="false" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false">
+         <center>
+        <TableView editable="false" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false" BorderPane.alignment="CENTER">
           <columns>
             <TableColumn prefWidth="75.0" text="Column X" />
             <TableColumn prefWidth="75.0" text="Column X" />
           </columns>
-          <BorderPane.margin>
-            <Insets fx:id="x1" />
-          </BorderPane.margin>
         </TableView>
-      </center>
-      <top>
-        <Pane maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="600.0" style="">
-          <children>
-            <Label layoutX="7.0" layoutY="6.0" text="%pesquisar" />
-            <TextField layoutX="7.0" layoutY="22.0" prefWidth="200.0" />
-            <ChoiceBox layoutX="214.0" layoutY="22.0">
+         </center>
+         <top>
+            <ToolBar BorderPane.alignment="CENTER">
+              <items>
+            <TextField prefHeight="25.0" prefWidth="250.0" />
+            <ChoiceBox prefHeight="25.0" prefWidth="120.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Item 1" />
@@ -37,47 +33,28 @@
                 </FXCollections>
               </items>
             </ChoiceBox>
-            <Label layoutX="214.0" layoutY="6.0" text="%por" />
-            <Button contentDisplay="GRAPHIC_ONLY" layoutX="294.0" layoutY="22.0" minWidth="26.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="21.0" text="">
-              <graphic>
+                  <Separator orientation="VERTICAL" prefHeight="10.0" />
+                  <Button mnemonicParsing="false" text="Criar">
+                     <graphic>
                 <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../icons/subtract_16.png" />
-                  </image>
-                </ImageView>
-              </graphic>
-              <tooltip>
-                <Tooltip text="%cancelarFiltro" />
-              </tooltip>
-            </Button>
-            <Button contentDisplay="GRAPHIC_ONLY" layoutX="340.0" layoutY="6.0" minWidth="37.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="37.0" text="">
-              <graphic>
-                <ImageView fitHeight="32.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                   <image>
                     <Image url="@../icons/add_32.png" />
                   </image>
                 </ImageView>
-              </graphic>
-              <tooltip>
-                <Tooltip text="%adcionar" />
-              </tooltip>
-            </Button>
-            <Separator layoutX="328.0" layoutY="0.0" orientation="VERTICAL" prefHeight="50.0" />
-            <Button contentDisplay="GRAPHIC_ONLY" layoutX="387.0" layoutY="6.0" minWidth="37.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="37.0" text="">
-              <graphic>
-                <ImageView fitHeight="32.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Excluir">
+                     <graphic>
+                <ImageView fitHeight="32.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                   <image>
                     <Image url="@../icons/trash_32.png" />
                   </image>
                 </ImageView>
-              </graphic>
-              <tooltip>
-                <Tooltip text="%remover" />
-              </tooltip>
-            </Button>
-          </children>
-        </Pane>
-      </top>
+                     </graphic>
+                  </Button>
+              </items>
+            </ToolBar>
+         </top>
     </BorderPane>
   </children>
 </AnchorPane>

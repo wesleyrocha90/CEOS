@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -60,6 +61,20 @@ public class QueryUtil {
       query.setParameter(entry.getKey(), entry.getValue());
     }
     return (T)query.getSingleResult();
+  }
+  
+  public static void removeEntity(Object entity){
+    EntityTransaction et = entityManager.getTransaction();
+    et.begin();
+    entityManager.remove(entity);
+    et.commit();
+  }
+  
+  public static void saveEntity(Object entity){
+    EntityTransaction et = entityManager.getTransaction();
+    et.begin();
+    entityManager.persist(entity);
+    et.commit();
   }
 
   public static UaiCriteria getCriteriaCliente() {

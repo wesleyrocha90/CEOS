@@ -24,7 +24,7 @@ public class GrupoUsuario extends EntidadeBase implements Serializable {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Getter @Setter private int id;
+  @Getter @Setter private Long id;
 
   @Column(name = "DESCRICAO")
   @Getter @Setter private String descricao;
