@@ -2,6 +2,8 @@ package br.com.ceos.controller;
 
 import br.com.ceos.entity.GrupoUsuario;
 import br.com.ceos.util.QueryUtil;
+import io.datafx.controller.FXMLController;
+import io.datafx.controller.flow.action.ActionTrigger;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,8 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.datafx.controller.FXMLController;
-import org.datafx.controller.flow.action.ActionTrigger;
 
 @FXMLController("/fxml/GrupoUsuarioLista.fxml")
 public class GrupoUsuarioListaController implements Initializable {

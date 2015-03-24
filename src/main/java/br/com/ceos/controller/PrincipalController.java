@@ -6,6 +6,9 @@ import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
+import io.datafx.controller.ViewConfiguration;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -18,9 +21,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import org.datafx.controller.ViewConfiguration;
-import org.datafx.controller.flow.Flow;
-import org.datafx.controller.flow.FlowException;
 
 public class PrincipalController implements Initializable {
 
@@ -62,9 +62,11 @@ public class PrincipalController implements Initializable {
 //              FXMLLoader loaderList = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
 //              Parent root = (Parent) loaderList.load();
 //              tab.setContent(root);
+              
               ViewConfiguration viewConfiguration = new ViewConfiguration();
               viewConfiguration.setResources(BundleUtil.getBundle());
-              Flow flow = new FlowI18n(GrupoUsuarioListaController.class, viewConfiguration)
+//              Flow flow = new FlowI18n(GrupoUsuarioListaController.class, viewConfiguration)
+              Flow flow = new Flow(GrupoUsuarioListaController.class, viewConfiguration)
                   .withLink(GrupoUsuarioListaController.class, "criarNovo", GrupoUsuarioCadastroController.class)
                   .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class);
               

@@ -1,9 +1,9 @@
 package br.com.ceos.controller.flow;
 
-import org.datafx.controller.ViewConfiguration;
-import org.datafx.controller.flow.Flow;
-import org.datafx.controller.flow.FlowHandler;
-import org.datafx.controller.flow.context.ViewFlowContext;
+import io.datafx.controller.ViewConfiguration;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.context.ViewFlowContext;
 
 /**
  * Classe usada para configurar o recurso da internacionalização no FlowAPI
