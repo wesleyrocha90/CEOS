@@ -38,8 +38,7 @@ public class GrupoUsuarioListaController {
   @Inject
   private DataModelFlow model;
   
-  @ActionMethod("criar")
-  private void onBotaoCriarNovoAction(){
+  public void onBotaoCriarNovoAction(){
     tableGrupoUsuario.getSelectionModel().clearSelection();
   };
   
@@ -52,4 +51,6 @@ public class GrupoUsuarioListaController {
     tableGrupoUsuario.itemsProperty().bind(model.getData());
     model.selecteDataIndexProperty().bind(tableGrupoUsuario.getSelectionModel().selectedIndexProperty());
   }
+  
+  Runnable runnable = () -> tableGrupoUsuario.getSelectionModel().clearSelection();
 }
