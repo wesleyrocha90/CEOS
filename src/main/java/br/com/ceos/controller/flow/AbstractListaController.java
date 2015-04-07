@@ -1,19 +1,13 @@
 package br.com.ceos.controller.flow;
 
-import javafx.event.ActionEvent;
+import io.datafx.controller.flow.action.ActionTrigger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public abstract class AbstractListaController<E> {
+public abstract class AbstractListaController {
   
   @FXML
+  @ActionTrigger("criar")
   private Button botaoCriarNovo;
   
-  @FXML 
-  private void onCriarNovoAction(ActionEvent event){
-  }
-  
-  @FXML
-  private void onEditarAction(ActionEvent event){
-  }
 }

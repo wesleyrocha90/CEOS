@@ -19,6 +19,7 @@ public class GrupoUsuarioCadastroController {
   private TextField descricao;
   
   @FXML
+  @ActionTrigger("salvar")
   private Button botaoSalvar;
   @FXML
   private Button botaoSalvarEFechar;
@@ -32,10 +33,17 @@ public class GrupoUsuarioCadastroController {
   
   @PostConstruct
   public void init() {
+    GrupoUsuario grupoUsuario = null;
     if(model.getSelectedDataIndex() >= 0){
-      GrupoUsuario grupoUsuario = model.getData().get(model.getSelectedDataIndex());
+      grupoUsuario = model.getData().get(model.getSelectedDataIndex());
       codigo.setText(grupoUsuario.getId().toString());
       descricao.setText(grupoUsuario.getDescricao());
     }
+  }
+  
+  public void onSaveAction(){
+    GrupoUsuario grupoUsuario = new GrupoUsuario(descricao.getText());
+    grupoUsuario.setId(new Long(codigo.getText()));
+    model.setEditedData(grupoUsuario);
   }
 }

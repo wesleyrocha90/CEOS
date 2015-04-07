@@ -77,6 +77,13 @@ public class QueryUtil {
     et.commit();
   }
 
+  public static void updateEntity(Object entity){
+    EntityTransaction et = entityManager.getTransaction();
+    et.begin();
+    entityManager.merge(entity);
+    et.commit();
+  }
+
   public static UaiCriteria getCriteriaCliente() {
     UaiCriteria<Cliente> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(entityManager, Cliente.class);
     return uaiCriteria;
