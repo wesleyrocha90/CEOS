@@ -59,22 +59,11 @@ public class PrincipalController implements Initializable {
           }
           if (!temTabua) {
             try {
-              
-//              FXMLLoader loaderList = new FXMLLoader(getClass().getResource("/fxml/GrupoUsuarioLista.fxml"), 
-//                  BundleUtil.getBundle());
-//              Parent root = (Parent) loaderList.load();
-//              tab.setContent(root);
-//              tabPane.getTabs().add(tab);
-//              tabPane.getSelectionModel().select(tab);
-//            } catch (SecurityException | IOException ex) {
-//              System.out.println(ex);
-//            }
-            
               ViewConfiguration viewConfiguration = new ViewConfiguration();
               viewConfiguration.setResources(BundleUtil.getBundle());
               Flow flow = new FlowI18n(GrupoUsuarioListaController.class, viewConfiguration)
-//                  .withLink(GrupoUsuarioListaController.class, "editar", GrupoUsuarioCadastroController.class)
-//                  .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class)
+                  .withLink(GrupoUsuarioListaController.class, "editar", GrupoUsuarioCadastroController.class)
+                  .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class)
 //                  .withAction(GrupoUsuarioListaController.class, "criar", new FlowActionChain(
 //                      new FlowMethodAction(GrupoUsuarioListaController.class.getMethod("onBotaoCriarNovoAction")),
 //                      new FlowLink(GrupoUsuarioCadastroController.class)))

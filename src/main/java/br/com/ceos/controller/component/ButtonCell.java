@@ -1,11 +1,10 @@
 package br.com.ceos.controller.component;
 
-import br.com.ceos.entity.GrupoUsuario;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.ImageView;
 
-public class ButtonCell extends TableCell<GrupoUsuario, Boolean>{
+public class ButtonCell<E> extends TableCell<E, Boolean>{
   final Button cellButton = new Button();
   
   public ButtonCell(String nomeIcone){
