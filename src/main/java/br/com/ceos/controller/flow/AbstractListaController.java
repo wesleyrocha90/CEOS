@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 public abstract class AbstractListaController<E> {
   
@@ -23,7 +24,8 @@ public abstract class AbstractListaController<E> {
   @FXML
   private TableColumn<E, Boolean> colunaExcluir;
   
-  private DataModelFlow<E> modelo = new DataModelFlow<>();
+  @Inject
+  private DataModelFlow<E> modelo;
 
   public abstract Supplier<ObservableList<E>> supplier(); // fornece a lista de dados para a tabela
   
@@ -35,8 +37,11 @@ public abstract class AbstractListaController<E> {
     colunaExcluir.setCellFactory( param -> new ButtonCell("delete_16"));
     colunaSelecionar.setCellFactory( param -> new CheckBoxTableCell<>() );
     
-    modelo.setSupplier(supplier());
-    tabela.itemsProperty().bind(modelo.getData());
-    modelo.selectedDataIndexProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
+    if(modelo != null){
+      modelo.setSupplier(supplier());
+      tabela.itemsProperty().bind(modelo.getData());
+      modelo.selectedDataIndexProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
+    }
+    System.out.println("AbstractListaController " + modelo);
   }
 }

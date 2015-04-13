@@ -8,38 +8,50 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-preview-i18n-resource ../bundles/messages_pt_BR.properties?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <ToolBar orientation="HORIZONTAL" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <items>
-        <Button fx:id="salvar" mnemonicParsing="false" text="%salvar">
-          <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@../icons/save_16.png" />
-              </image>
-            </ImageView>
-          </graphic>
-        </Button>
-        <Button fx:id="salvarEFechar" mnemonicParsing="false" text="%salvarEFechar">
-          <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@../icons/save_16.png" />
-              </image>
-            </ImageView>
-          </graphic>
-        </Button>
-        <Button fx:id="cancelar" mnemonicParsing="false" text="%cancelar">
-          <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@../icons/undo_16.png" />
-              </image>
-            </ImageView>
-          </graphic>
-        </Button>
-      </items>
-    </ToolBar>
+      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+          <ToolBar orientation="HORIZONTAL" BorderPane.alignment="CENTER">
+            <items>
+              <Button fx:id="salvar" mnemonicParsing="false" text="%salvar">
+                <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                      <Image url="@../icons/save_16.png" />
+                    </image>
+                  </ImageView>
+                </graphic>
+              </Button>
+              <Button fx:id="salvarEFechar" mnemonicParsing="false" text="%salvarEFechar">
+                <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                      <Image url="@../icons/save_16.png" />
+                    </image>
+                  </ImageView>
+                </graphic>
+              </Button>
+              <Button fx:id="cancelar" mnemonicParsing="false" text="%cancelar">
+                <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                      <Image url="@../icons/undo_16.png" />
+                    </image>
+                  </ImageView>
+                </graphic>
+              </Button>
+            </items>
+          </ToolBar>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="%descricao" />
+                  <TextField layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="575.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
   </children>
 </AnchorPane>
