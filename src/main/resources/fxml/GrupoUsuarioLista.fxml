@@ -13,7 +13,7 @@
           <items>
             <TextField prefWidth="250.0" />
             <ChoiceBox prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="%criar">
+                  <Button fx:id="criar" mnemonicParsing="false" text="%criar">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -43,7 +43,6 @@ public class GrupoUsuarioCadastroControllerOld {
   
   public void onSaveAction(){
     GrupoUsuario grupoUsuario = new GrupoUsuario(descricao.getText());
-    grupoUsuario.setId(new Long(codigo.getText()));
     model.setEditedData(grupoUsuario);
   }
 }

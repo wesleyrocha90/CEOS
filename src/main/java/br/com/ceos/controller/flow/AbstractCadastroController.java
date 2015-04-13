@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import lombok.Getter;
 
 public abstract class AbstractCadastroController<E> {
 
   @FXML
+  @ActionTrigger("salvar")
   private Button salvar;
   @FXML
   private Button salvarEFechar;
@@ -17,10 +19,10 @@ public abstract class AbstractCadastroController<E> {
   private Button cancelar;
   
   @Inject
-  public DataModelFlow<E> modelo;
+  @Getter public DataModelFlow<E> modelo;
   
   @PostConstruct
   public void initialize(){
-    System.out.println("AbstractCadastroController " + modelo);
+//    System.out.println("AbstractCadastroController " + modelo);
   }
 }

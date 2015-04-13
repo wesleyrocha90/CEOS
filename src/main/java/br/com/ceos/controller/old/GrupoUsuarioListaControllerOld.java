@@ -41,15 +41,15 @@ public class GrupoUsuarioListaControllerOld {
   
   @PostConstruct
   public void init() {
-    colunaEditar.setCellValueFactory( param -> new SimpleBooleanProperty(param.getValue() != null));
-    colunaEditar.setCellFactory( param -> new ButtonCell("edit_16"));
-    colunaExcluir.setCellValueFactory( param -> new SimpleBooleanProperty(param.getValue() != null));
-    colunaExcluir.setCellFactory( param -> new ButtonCell("delete_16"));
-    colunaSelecionar.setCellFactory( param -> new CheckBoxTableCell<>() );
-    
-    colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-    
-    tabela.itemsProperty().bind(model.getData());
-    model.selectedDataIndexProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
+//    colunaEditar.setCellValueFactory( param -> new SimpleBooleanProperty(param.getValue() != null));
+//    colunaEditar.setCellFactory( param -> new ButtonCell("edit_16"));
+//    colunaExcluir.setCellValueFactory( param -> new SimpleBooleanProperty(param.getValue() != null));
+//    colunaExcluir.setCellFactory( param -> new ButtonCell("delete_16"));
+//    colunaSelecionar.setCellFactory( param -> new CheckBoxTableCell<>() );
+//    
+//    colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+//    
+//    tabela.itemsProperty().bind(model.getData());
+//    model.selectedDataIndexProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
   }
 }
