@@ -1,20 +1,13 @@
 package br.com.ceos.controller;
 
-import br.com.ceos.controller.flow.FlowI18n;
-import br.com.ceos.controller.flow.RemoveActionTask;
-import br.com.ceos.controller.flow.SaveActionTask;
+import br.com.ceos.controller.flow.FlowFactory;
 import br.com.ceos.entity.MenuItem;
 import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
-import io.datafx.controller.ViewConfiguration;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.action.FlowActionChain;
-import io.datafx.controller.flow.action.FlowLink;
-import io.datafx.controller.flow.action.FlowMethodAction;
-import io.datafx.controller.flow.action.FlowTaskAction;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class PrincipalController implements Initializable {
-
+  
   @FXML
   private Accordion accordion;
 
@@ -65,26 +58,11 @@ public class PrincipalController implements Initializable {
           }
           if (!temTabua) {
             try {
-              ViewConfiguration viewConfiguration = new ViewConfiguration();
-              viewConfiguration.setResources(BundleUtil.getBundle());
-              Flow flow = new FlowI18n(GrupoUsuarioListaController.class, viewConfiguration)
-                  .withLink(GrupoUsuarioListaController.class, "editar", GrupoUsuarioCadastroController.class)
-                  .withLink(GrupoUsuarioCadastroController.class, "cancelar", GrupoUsuarioListaController.class)
-                  .withAction(GrupoUsuarioListaController.class, "criar", new FlowActionChain(
-                      new FlowMethodAction(GrupoUsuarioListaController.class.getMethod("onBotaoCriarNovoAction")),
-                      new FlowLink(GrupoUsuarioCadastroController.class)))
-                  
-                  //TODO falta acertar esses dois ainda
-//                  .withTaskAction(GrupoUsuarioListaController.class, "excluir", RemoveActionTask.class)
-                  .withAction(GrupoUsuarioCadastroController.class, "salvar", new FlowActionChain(
-                      new FlowMethodAction(GrupoUsuarioCadastroController.class.getMethod("onSaveAction")),
-                      new FlowTaskAction(SaveActionTask.class),
-                      new FlowLink(GrupoUsuarioListaController.class)))
-                  ;
+              Flow flow = FlowFactory.createFlow(menuItem.getFxmlTela());
               tab.setContent(flow.start());
               tabPane.getTabs().add(tab);
               tabPane.getSelectionModel().select(tab);
-            } catch (NoSuchMethodException | SecurityException | FlowException ex) {
+            } catch (SecurityException | FlowException ex) {
               System.out.println(ex);
             }
           }

@@ -22,16 +22,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button fx:id="remover" mnemonicParsing="false" text="%remover">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/delete_16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
           </items>
         </ToolBar>
       </top>
       <center>
         <TableView fx:id="tabela" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
           <columns>
-            <TableColumn fx:id="colunaSelecionar" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" />
             <TableColumn fx:id="colunaDescricao" editable="false" prefWidth="75.0" text="%descricao" />
-            <TableColumn fx:id="colunaEditar" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" />
-            <TableColumn fx:id="colunaExcluir" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" />
           </columns>
           <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

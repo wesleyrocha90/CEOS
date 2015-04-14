@@ -13,17 +13,20 @@ public class GrupoUsuarioCadastroController extends AbstractCadastroController<G
   @FXML
   private TextField descricao;
   
+  private GrupoUsuario grupoUsuario;
+  
   @PostConstruct
   public void init(){
-    GrupoUsuario grupoUsuario = null;
     if(getModelo().getSelectedDataIndex() >= 0){
       grupoUsuario = getModelo().getData().get(getModelo().getSelectedDataIndex());
-      descricao.setText(grupoUsuario.getDescricao());
+    }else{
+      grupoUsuario = new GrupoUsuario();
     }
+    descricao.setText(grupoUsuario.getDescricao());
   }
   
   public void onSaveAction(){
-    GrupoUsuario grupoUsuario = new GrupoUsuario(descricao.getText());
+    grupoUsuario.setDescricao(descricao.getText());
     getModelo().setEditedData(grupoUsuario);
   }
 }
