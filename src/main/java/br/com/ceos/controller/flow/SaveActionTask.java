@@ -1,13 +1,12 @@
 package br.com.ceos.controller.flow;
 
-import br.com.ceos.entity.GrupoUsuario;
 import br.com.ceos.util.QueryUtil;
 import javax.inject.Inject;
 
-public class SaveActionTask<E> implements Runnable{
+public class SaveActionTask implements Runnable{
   
   @Inject
-  private DataModelFlow<GrupoUsuario> model;
+  private DataModelFlow model;
   
   @Override
   public void run() {

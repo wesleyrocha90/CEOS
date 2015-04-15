@@ -1,5 +1,6 @@
 package br.com.ceos.controller.flow;
 
+import br.com.ceos.entity.EntidadeBase;
 import io.datafx.controller.injection.scopes.FlowScoped;
 import java.util.function.Supplier;
 import javafx.beans.property.IntegerProperty;
@@ -11,7 +12,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 
 @FlowScoped
-public class DataModelFlow<E> {
+public class DataModelFlow<E extends EntidadeBase> {
   
   private Supplier<ObservableList<E>> supplier;
   private ListProperty<E> data;
@@ -23,7 +24,7 @@ public class DataModelFlow<E> {
     data = new SimpleListProperty<>(supplier.get());
   }
   
-  public ListProperty<E> getData() {
+  public ListProperty<E> getData(){
     return data;
   }
   

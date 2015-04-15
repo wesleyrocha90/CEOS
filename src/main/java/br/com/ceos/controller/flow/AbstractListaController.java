@@ -1,5 +1,6 @@
 package br.com.ceos.controller.flow;
 
+import br.com.ceos.entity.EntidadeBase;
 import io.datafx.controller.flow.action.ActionTrigger;
 import java.util.function.Supplier;
 import javafx.collections.ObservableList;
@@ -10,7 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import lombok.Getter;
 
-public abstract class AbstractListaController<E> {
+public abstract class AbstractListaController<E extends EntidadeBase> {
   
   @FXML
   @ActionTrigger("editar")
@@ -27,7 +28,7 @@ public abstract class AbstractListaController<E> {
   @Inject
   @Getter private DataModelFlow<E> modelo;
 
-  public abstract Supplier<ObservableList<E>> supplier(); // fornece a lista de dados para a tabela
+  public abstract Supplier<ObservableList<E>> supplier();
   
   public void onBotaoCriarNovoAction(){
     tabela.getSelectionModel().clearSelection();

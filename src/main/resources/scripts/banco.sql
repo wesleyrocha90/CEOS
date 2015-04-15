@@ -11,7 +11,7 @@ INSERT INTO usuario(ID, LOGIN, SENHA, ATIVO, FK_GRUPO_USUARIO_ID, DATA_CRIACAO, 
 INSERT INTO menu_painel(ID, TITULO, ORDEM) 
   VALUES(DEFAULT, 'cadastros', 1);
 
-INSERT INTO menu_item(ID, TITULO, IMAGEM, FXML_TELA, ORDEM, FK_ID_MENU_PAINEL) 
-  VALUES(DEFAULT, 'usuario', 'user_16', 'UsuarioLista', 1, 1),
-        (DEFAULT, 'grupoUsuario', 'users_16', 'GrupoUsuarioLista', 2, 1),
-        (DEFAULT, 'cliente', 'users_16', 'ClienteLista', 3, 1);
+INSERT INTO menu_item(ID, TITULO, IMAGEM, CLASSE_CONTROLLER, ORDEM, FK_ID_MENU_PAINEL) 
+  VALUES(DEFAULT, 'usuario', 'user_16', 'Usuario', 1, 1),
+        (DEFAULT, 'grupoUsuario', 'users_16', 'GrupoUsuario', 2, 1),
+        (DEFAULT, 'cliente', 'users_16', 'Cliente', 3, 1);

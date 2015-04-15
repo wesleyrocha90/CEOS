@@ -3,6 +3,7 @@ package br.com.ceos.controller;
 import br.com.ceos.controller.flow.AbstractCadastroController;
 import br.com.ceos.entity.GrupoUsuario;
 import io.datafx.controller.ViewController;
+import java.util.function.Supplier;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javax.annotation.PostConstruct;
@@ -24,9 +25,12 @@ public class GrupoUsuarioCadastroController extends AbstractCadastroController<G
     }
     descricao.setText(grupoUsuario.getDescricao());
   }
-  
-  public void onSaveAction(){
-    grupoUsuario.setDescricao(descricao.getText());
-    getModelo().setEditedData(grupoUsuario);
+
+  @Override
+  public Supplier<GrupoUsuario> filler() {
+    return () -> {
+      grupoUsuario.setDescricao(descricao.getText());
+      return grupoUsuario;
+    };
   }
 }
