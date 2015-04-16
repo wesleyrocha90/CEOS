@@ -34,7 +34,7 @@ public class MenuItem implements Serializable {
   @Column(name = "IMAGEM")
   @Getter @Setter private String imagem;
 
-  @Column(name = "FXML_TELA")
+  @Column(name = "CLASSE_CONTROLLER")
   @Getter @Setter private String fxmlTela;
 
   @ManyToOne
