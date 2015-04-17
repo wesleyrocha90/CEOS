@@ -1,6 +1,7 @@
 package br.com.ceos.controller.flow;
 
 import br.com.ceos.entity.EntidadeBase;
+import io.datafx.controller.flow.action.ActionMethod;
 import io.datafx.controller.flow.action.ActionTrigger;
 import java.util.function.Supplier;
 import javafx.collections.ObservableList;
@@ -22,7 +23,7 @@ public abstract class AbstractListaController<E extends EntidadeBase> {
   private Button criar;
   
   @FXML
-  @ActionTrigger("remover")
+//  @ActionTrigger("remover")
   private Button remover;
   
   @Inject
@@ -38,8 +39,9 @@ public abstract class AbstractListaController<E extends EntidadeBase> {
   public void initialize(){
     if(modelo != null){
       modelo.setSupplier(supplier());
-      tabela.itemsProperty().bind(modelo.getData());
-      modelo.selectedDataIndexProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
+      tabela.itemsProperty().bind(modelo.getDados());
+//      modelo.dadoProperty().bind(tabela.getSelectionModel().selectedItemProperty());
+      modelo.indiceDadoProperty().bind(tabela.getSelectionModel().selectedIndexProperty());
     }
   }
 }

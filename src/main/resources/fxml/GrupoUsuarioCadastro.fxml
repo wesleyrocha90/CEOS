@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -47,8 +48,22 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="%descricao" />
-                  <TextField fx:id="descricao" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="575.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                  <GridPane hgap="10.0" layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="%descricao" />
+                        <TextField fx:id="descricao" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="575.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" GridPane.rowIndex="1" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </GridPane>
                </children>
             </AnchorPane>
          </center>

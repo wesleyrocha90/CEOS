@@ -10,13 +10,13 @@ public class SaveActionTask implements Runnable{
   
   @Override
   public void run() {
-    if(model.getEditedData() != null){
-      if(model.getEditedData().getId() == null){
-        QueryUtil.saveEntity(model.getEditedData());
+    if(model.getDado() != null){
+      if(model.getDado().getId() == null){
+        QueryUtil.saveEntity(model.getDado());
       }else{
-        QueryUtil.updateEntity(model.getEditedData());
+        QueryUtil.updateEntity(model.getDado());
       }
-      model.getData().add(model.getEditedData());
+      model.getDados().add(model.getDado());
     }
   }
 }

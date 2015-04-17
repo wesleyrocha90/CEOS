@@ -2,20 +2,21 @@ package br.com.ceos.controller.flow;
 
 import br.com.ceos.entity.EntidadeBase;
 import io.datafx.controller.flow.action.ActionTrigger;
-import java.util.function.Supplier;
+import java.lang.reflect.ParameterizedType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import lombok.Getter;
 
 public abstract class AbstractCadastroController<E extends EntidadeBase> {
 
   @FXML
-  @ActionTrigger("salvar")
+//  @ActionTrigger("salvar")
   private Button salvar;
   
   @FXML
-  @ActionTrigger("salvarEFechar")
+//  @ActionTrigger("salvarEFechar")
   private Button salvarEFechar;
   
   @FXML
@@ -25,9 +26,29 @@ public abstract class AbstractCadastroController<E extends EntidadeBase> {
   @Inject
   @Getter private DataModelFlow<E> modelo;
   
-  public abstract Supplier<E> filler();
+  public abstract E telaParaObjeto();
+  public abstract void objetoParaTela(E objeto);
   
   public void onSaveAction(){
-    getModelo().setEditedData(filler().get());
+    modelo.setDado(telaParaObjeto());
+  }
+  
+  @PostConstruct
+  public void initialize(){
+    if(modelo != null){
+      if(modelo.getIndiceDado() >= 0){
+        modelo.setDado(modelo.getDados().get(modelo.getIndiceDado()));
+      }else{
+//        try {
+//          ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
+//          String parameterClassName = parameterizedType.getActualTypeArguments()[0].getTypeName();
+////          modelo.setDado((E) Class.forName(parameterClassName).newInstance());
+//          System.out.println("Instanciando : " + (E)Class.forName(parameterClassName).newInstance());
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+//          System.out.println(ex);
+//        }
+      }
+      objetoParaTela(modelo.getDado());
+    }
   }
 }

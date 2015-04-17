@@ -68,15 +68,15 @@
                         <Label text="%ativo" />
                         <Label text="%grupo" GridPane.columnIndex="1" />
                         <Label text="%dataDeExpiracao" GridPane.columnIndex="2" />
-                        <Label text="%usuario" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+                        <Label text="%login" GridPane.columnSpan="3" GridPane.rowIndex="2" />
                         <Label text="%senha" GridPane.columnSpan="3" GridPane.rowIndex="4" />
                         <Label text="%confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-                        <TextField GridPane.columnSpan="3" GridPane.rowIndex="3" />
-                        <DatePicker maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <ChoiceBox maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" selected="true" text="%sim" GridPane.rowIndex="1" />
-                        <PasswordField GridPane.columnSpan="3" GridPane.rowIndex="5" />
-                        <PasswordField GridPane.columnSpan="3" GridPane.rowIndex="7">
+                        <TextField fx:id="login" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dataDeExpiracao" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ChoiceBox fx:id="grupo" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="ativo" mnemonicParsing="false" selected="true" text="%sim" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="senha" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+                        <PasswordField fx:id="confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>

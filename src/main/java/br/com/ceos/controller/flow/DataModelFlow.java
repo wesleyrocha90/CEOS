@@ -15,40 +15,40 @@ import javafx.collections.ObservableList;
 public class DataModelFlow<E extends EntidadeBase> {
   
   private Supplier<ObservableList<E>> supplier;
-  private ListProperty<E> data;
-  private ObjectProperty<E> editedData;
-  private IntegerProperty selectedDataIndex;
+  private ListProperty<E> dados;
+  private ObjectProperty<E> dado;
+  private IntegerProperty indiceDado;
 
   public void setSupplier(Supplier<ObservableList<E>> supplier){
     this.supplier = supplier;
-    data = new SimpleListProperty<>(supplier.get());
+    dados = new SimpleListProperty<>(supplier.get());
   }
   
-  public ListProperty<E> getData(){
-    return data;
+  public ListProperty<E> getDados(){
+    return dados;
   }
   
-  public E getEditedData(){
-    return editedDataProperty().get();
+  public E getDado(){
+    return dadoProperty().get();
   }
   
-  public void setEditedData(E editedData){
-    editedDataProperty().set(editedData);
+  public void setDado(E dado){
+    dadoProperty().set(dado);
   }
   
-  public ObjectProperty<E> editedDataProperty() {
-    return (editedData == null) ? editedData = new SimpleObjectProperty<>() : editedData;
+  public ObjectProperty<E> dadoProperty() {
+    return (dado == null) ? dado = new SimpleObjectProperty<>() : dado;
   }
   
-   public int getSelectedDataIndex() {
-    return selectedDataIndexProperty().get();
+   public int getIndiceDado() {
+    return indiceDadoProperty().get();
   }
 
-  public void setSelectedDataIndex(int selectedDataIndex) {
-    selectedDataIndexProperty().set(selectedDataIndex);
+  public void setIndiceDado(int indiceDado) {
+    indiceDadoProperty().set(indiceDado);
   }
 
-  public IntegerProperty selectedDataIndexProperty() {
-    return (selectedDataIndex == null) ? selectedDataIndex = new SimpleIntegerProperty() : selectedDataIndex;
+  public IntegerProperty indiceDadoProperty() {
+    return (indiceDado == null) ? indiceDado = new SimpleIntegerProperty() : indiceDado;
   }
 }
