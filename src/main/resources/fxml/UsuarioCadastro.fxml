@@ -63,14 +63,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="%ativo" />
                         <Label text="%grupo" GridPane.columnIndex="1" />
                         <Label text="%dataDeExpiracao" GridPane.columnIndex="2" />
                         <Label text="%login" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-                        <Label text="%senha" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-                        <Label text="%confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+                        <Label fx:id="labelSenha" text="%senha" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                        <Label fx:id="labelConfirmarSenha" text="%confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="6" />
                         <TextField fx:id="login" GridPane.columnSpan="3" GridPane.rowIndex="3" />
                         <DatePicker fx:id="dataDeExpiracao" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <ChoiceBox fx:id="grupo" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -81,6 +82,7 @@
                               <Insets />
                            </GridPane.margin>
                         </PasswordField>
+                        <Button fx:id="alterarSenha" mnemonicParsing="false" text="%alterarSenha" GridPane.rowIndex="8" />
                      </children>
                      <padding>
                         <Insets left="10.0" right="10.0" />

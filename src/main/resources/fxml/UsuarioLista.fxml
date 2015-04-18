@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -41,10 +40,10 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                <columns>
-                  <TableColumn fx:id="colunaAtivo" prefWidth="75.0" text="%ativo" />
-                  <TableColumn fx:id="colunaGrupo" prefWidth="75.0" text="%grupo" />
-                  <TableColumn fx:id="colunaUsuario" prefWidth="75.0" text="%usuario" />
-                  <TableColumn fx:id="colunaDataDeExpiracao" prefWidth="75.0" text="%dataDeExpiracao" />
+                  <TableColumn fx:id="colunaAtivo" editable="false" prefWidth="75.0" text="%ativo" />
+                  <TableColumn fx:id="colunaGrupo" editable="false" prefWidth="75.0" text="%grupo" />
+                  <TableColumn fx:id="colunaUsuario" editable="false" prefWidth="75.0" text="%usuario" />
+                  <TableColumn fx:id="colunaDataDeExpiracao" editable="false" prefWidth="75.0" text="%dataDeExpiracao" />
                </columns>
             </TableView>
          </center>

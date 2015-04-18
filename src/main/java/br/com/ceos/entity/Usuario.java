@@ -36,14 +36,14 @@ public class Usuario extends EntidadeBase implements Serializable {
   @Getter @Setter private String senha;
 
   @Column(name = "ATIVO")
-  @Getter @Setter private boolean ativo;
-
-  @ManyToOne
-  @JoinColumn(name = "FK_GRUPO_USUARIO_ID", referencedColumnName = "ID")
-  @Getter @Setter private GrupoUsuario grupoUsuario;
+  @Getter @Setter private boolean ativo = true;
 
   @Column(name = "DATA_EXPIRACAO")
   @Convert(converter = LocalDatePersistenceConverter.class)
   @Future
-  @Getter @Setter private LocalDate dataExpiracao;
+  @Getter @Setter private LocalDate dataExpiracao = LocalDate.now().plusYears(1);
+    
+  @ManyToOne
+  @JoinColumn(name = "FK_GRUPO_USUARIO_ID", referencedColumnName = "ID")
+  @Getter @Setter private GrupoUsuario grupoUsuario;
 }

@@ -1,26 +1,20 @@
 package br.com.ceos.controller;
 
 import br.com.ceos.controller.flow.AbstractListaController;
-import br.com.ceos.data.UsuarioData;
 import br.com.ceos.entity.Usuario;
+import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.QueryUtil;
 import io.datafx.controller.ViewController;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.format.FormatStyle;
 import java.util.function.Supplier;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.converter.LocalDateStringConverter;
 import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 @ViewController("/fxml/UsuarioLista.fxml")
 public class UsuarioListaController extends AbstractListaController<Usuario>{
@@ -36,10 +30,14 @@ public class UsuarioListaController extends AbstractListaController<Usuario>{
   
   @PostConstruct
   public void init(){
-    colunaAtivo.setCellValueFactory(new PropertyValueFactory<>("ativo"));
-    colunaGrupo.setCellValueFactory(new PropertyValueFactory<>("grupoUsuario"));
+    colunaAtivo.setCellValueFactory((e) -> 
+        new SimpleStringProperty((e.getValue().isAtivo() ? BundleUtil.getString("sim") : BundleUtil.getString("nao"))));
+    colunaGrupo.setCellValueFactory((e) ->
+        new SimpleStringProperty(e.getValue().getGrupoUsuario().getDescricao()));
     colunaUsuario.setCellValueFactory(new PropertyValueFactory<>("login"));
-    colunaDataDeExpiracao.setCellValueFactory(new PropertyValueFactory<>("dataExpiracao"));
+    colunaDataDeExpiracao.setCellValueFactory((e) ->
+        new SimpleStringProperty(
+        new LocalDateStringConverter(FormatStyle.SHORT).toString(e.getValue().getDataExpiracao())));
   }
   
   @Override

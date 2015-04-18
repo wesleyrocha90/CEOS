@@ -6,7 +6,7 @@ import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.context.ViewFlowContext;
 
 /**
- * Classe usada para configurar o recurso da internacionalização no FlowAPI
+ * Classe que configura o recurso da internacionalização na FlowAPI
  */
 public class FlowI18n extends Flow{
   
