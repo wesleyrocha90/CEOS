@@ -43,7 +43,7 @@ public class LoginController implements Initializable {
       try {
         Usuario usuario = QueryUtil.selectSingleByNamedQuery("Usuario.findByLoginSenha",
                 Maps.asMap("login", login, "senha", senha));
-        if (usuario.getAtivo()&& usuario.getDataExpiracao().isAfter(LocalDate.now())) {
+        if (usuario.isAtivo() && usuario.getDataExpiracao().isAfter(LocalDate.now())) {
           loginValido = true;
           erro.getScene().getWindow().hide();
         } else {
