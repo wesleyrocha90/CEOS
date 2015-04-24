@@ -20,9 +20,6 @@ public class BundleUtil {
   }
 
   public static String getString(String key) {
-    if (instance == null) {
-      instance = ResourceBundle.getBundle(bundlePath, locale);
-    }
-    return instance.getString(key);
+    return getBundle().getString(key);
   }
 }

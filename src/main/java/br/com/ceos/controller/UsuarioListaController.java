@@ -1,53 +1,47 @@
 package br.com.ceos.controller;
 
-import br.com.ceos.data.UsuarioData;
+import br.com.ceos.controller.flow.AbstractListaController;
 import br.com.ceos.entity.Usuario;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import br.com.ceos.util.BundleUtil;
+import br.com.ceos.util.QueryUtil;
+import io.datafx.controller.ViewController;
+import java.time.format.FormatStyle;
+import java.util.function.Supplier;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javafx.util.converter.LocalDateStringConverter;
+import javax.annotation.PostConstruct;
 
-public class UsuarioListaController implements Initializable {
+@ViewController("/fxml/UsuarioLista.fxml")
+public class UsuarioListaController extends AbstractListaController<Usuario>{
 
   @FXML
-  private TableView<UsuarioData> tableUsuario;
+  private TableColumn<Usuario, String> colunaAtivo;
   @FXML
-  private TableColumn columnId;
+  private TableColumn<Usuario, String> colunaGrupo;
   @FXML
-  private TableColumn columnLogin;
+  private TableColumn<Usuario, String> colunaUsuario;
   @FXML
-  private TableColumn columnAtivo;
-  @FXML
-  private TableColumn columnDataCadastro;
-  @FXML
-  private TableColumn columnDataExpiracao;
-  private ObservableList dados;
-
+  private TableColumn<Usuario, String> colunaDataDeExpiracao;
+  
+  @PostConstruct
+  public void init(){
+    colunaAtivo.setCellValueFactory((e) -> 
+        new SimpleStringProperty((e.getValue().isAtivo() ? BundleUtil.getString("sim") : BundleUtil.getString("nao"))));
+    colunaGrupo.setCellValueFactory((e) ->
+        new SimpleStringProperty(e.getValue().getGrupoUsuario().getDescricao()));
+    colunaUsuario.setCellValueFactory(new PropertyValueFactory<>("login"));
+    colunaDataDeExpiracao.setCellValueFactory((e) ->
+        new SimpleStringProperty(
+        new LocalDateStringConverter(FormatStyle.SHORT).toString(e.getValue().getDataExpiracao())));
+  }
+  
   @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-    columnLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
-    columnAtivo.setCellValueFactory(new PropertyValueFactory<>("ativo"));
-    columnDataCadastro.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
-    columnDataExpiracao.setCellValueFactory(new PropertyValueFactory<>("dataExpiracao"));
-    dados = FXCollections.observableArrayList();
-    tableUsuario.setItems(dados);
-
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
-    EntityManager em = emf.createEntityManager();
-    Query query = em.createNamedQuery("Usuario.findAll");
-    List<Usuario> usuarioLista = query.getResultList();
-
-    dados.addAll(usuarioLista);
+  public Supplier<ObservableList<Usuario>> supplier() {
+    return () -> FXCollections.observableArrayList(QueryUtil.selectListByNamedQuery("Usuario.findAll"));
   }
 }

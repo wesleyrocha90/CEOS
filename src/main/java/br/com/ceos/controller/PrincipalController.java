@@ -1,18 +1,18 @@
 package br.com.ceos.controller;
 
+import br.com.ceos.controller.flow.FlowFactory;
 import br.com.ceos.entity.MenuItem;
 import br.com.ceos.entity.MenuPainel;
 import br.com.ceos.util.BundleUtil;
 import br.com.ceos.util.Maps;
 import br.com.ceos.util.QueryUtil;
-import java.io.IOException;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class PrincipalController implements Initializable {
-
+  
   @FXML
   private Accordion accordion;
 
@@ -36,7 +36,7 @@ public class PrincipalController implements Initializable {
       TitledPane titledPane = new TitledPane();
       titledPane.setText(BundleUtil.getString(menuPainel.getTitulo()));
       VBox vbox = new VBox();
-      List<MenuItem> itens = QueryUtil.selectListByNamedQuery("MenuItem.findAllByMenu", 
+      List<MenuItem> itens = QueryUtil.selectListByNamedQuery("MenuItem.findAllByMenu",
               Maps.asMap("pai", menuPainel));
       itens.stream().map(menuItem -> {
         Button button = new Button();
@@ -48,25 +48,23 @@ public class PrincipalController implements Initializable {
         image.setPreserveRatio(true);
         button.setGraphic(image);
         button.setOnAction(event -> {
-          try {
-            Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
-            boolean temTabua = false;
-            for (Tab tabua : tabPane.getTabs()) {
-              if(tabua.getText().equals(tab.getText())){
-                tabPane.getSelectionModel().select(tabua);
-                temTabua = true;
-              }
+          Tab tab = new Tab(BundleUtil.getString(menuItem.getTitulo()));
+          boolean temTabua = false;
+          for (Tab tabua : tabPane.getTabs()) {
+            if (tabua.getText().equals(tab.getText())) {
+              tabPane.getSelectionModel().select(tabua);
+              temTabua = true;
             }
-            if(!temTabua){
-              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + menuItem.getFxmlTela() + ".fxml"), BundleUtil.getBundle());
-              Parent root = (Parent) fxmlLoader.load();
-              root.setPickOnBounds(true);
-              tab.setContent(root);
+          }
+          if (!temTabua) {
+            try {
+              Flow flow = FlowFactory.createFlow(menuItem.getFxmlTela());
+              tab.setContent(flow.start());
               tabPane.getTabs().add(tab);
               tabPane.getSelectionModel().select(tab);
+            } catch (SecurityException | FlowException ex) {
+              System.out.println(ex);
             }
-          } catch (IOException ex) {
-            System.out.println(ex);
           }
         });
         return button;

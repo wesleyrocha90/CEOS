@@ -15,7 +15,7 @@
       <children>
         <ImageView fitHeight="172.0" fitWidth="229.33332815678162" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
           <image>
-            <Image url="@../icons/CEOS_512.png" />
+            <Image url="@../icons/logos/CEOS_512.png" />
           </image>
         </ImageView>
         <TextField fx:id="textField" prefWidth="200.0" promptText="%usuario" onKeyPressed="#textFieldUSuarioOnKeyPressed" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />

@@ -1,43 +1,24 @@
 package br.com.ceos.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import br.com.ceos.controller.flow.AbstractCadastroController;
+import br.com.ceos.entity.GrupoUsuario;
+import io.datafx.controller.ViewController;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class GrupoUsuarioCadastroController implements Initializable {
+@ViewController("/fxml/GrupoUsuarioCadastro.fxml")
+public class GrupoUsuarioCadastroController extends AbstractCadastroController<GrupoUsuario>{
   
-  @FXML
-  private Button salvar;
-  @FXML
-  private Button salvarEFechar;
-  @FXML
-  private Button cancelar;
-  @FXML
-  private TextField codigo;
   @FXML
   private TextField descricao;
   
-  @FXML
-  public void onSalvarAction(ActionEvent event){
-    
-  }
-  
-  @FXML
-  public void onSalvarEFecharAction(ActionEvent event){
-    
-  }
-  
-  @FXML
-  public void onCancelarAction(ActionEvent event){
-    
-  }
-  
   @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    descricao.requestFocus();
+  public void telaParaObjeto(GrupoUsuario objeto) {
+    objeto.setDescricao(descricao.getText());
+  }
+
+  @Override
+  public void objetoParaTela(GrupoUsuario objeto) {
+    descricao.setText(objeto.getDescricao());
   }
 }

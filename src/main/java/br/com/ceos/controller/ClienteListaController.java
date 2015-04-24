@@ -1,6 +1,6 @@
 package br.com.ceos.controller;
 
-import br.com.ceos.data.ClienteData;
+import br.com.ceos.entity.Cliente;
 import br.com.ceos.manager.ClienteManager;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,32 +15,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ClienteListaController implements Initializable {
 
   @FXML
-  private TableView<ClienteData> tableCliente;
+  private TableView<Cliente> tableCliente;
   @FXML
-  private TableColumn columnCnpj;
-  @FXML
-  private TableColumn columnCpf;
+  private TableColumn columnCnpjCpf;
   @FXML
   private TableColumn columnRazaoSocial;
-  @FXML
-  private TableColumn columnNome;
   @FXML
   private TableColumn columnTelefone;
   private ObservableList result;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    columnCnpj.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
-    columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+    columnCnpjCpf.setCellValueFactory(new PropertyValueFactory<>("cnpjCpf"));
     columnRazaoSocial.setCellValueFactory(new PropertyValueFactory<>("razaoSocial"));
-    columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
     columnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
     result = FXCollections.observableArrayList();
     tableCliente.setItems(result);
     
     ClienteManager manager = new ClienteManager();
-    result.addAll(manager.findAllClienteFisico());
-    result.addAll(manager.findAllClienteJuridico());
+    result.addAll(manager.findAll());
   }
-
 }

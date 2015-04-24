@@ -4,6 +4,9 @@ import br.com.ceos.convert.LocalDatePersistenceConverter;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
@@ -14,7 +17,12 @@ import lombok.Setter;
 @MappedSuperclass
 @AllArgsConstructor
 public class EntidadeBase {
-
+  
+  @Id
+  @Column(name = "ID")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter @Setter private Long id;
+  
   @Column(name = "DATA_CRIACAO")
   @Convert(converter = LocalDatePersistenceConverter.class)
   @Getter @Setter private LocalDate dataCriacao;
