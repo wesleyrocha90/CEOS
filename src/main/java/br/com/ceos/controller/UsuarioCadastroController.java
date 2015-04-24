@@ -1,5 +1,6 @@
 package br.com.ceos.controller;
 
+import br.com.ceos.controller.control.Decorador;
 import br.com.ceos.controller.flow.AbstractCadastroController;
 import br.com.ceos.entity.GrupoUsuario;
 import br.com.ceos.entity.Usuario;
@@ -49,16 +50,8 @@ public class UsuarioCadastroController extends AbstractCadastroController<Usuari
         ativo.setText( (newValue ? BundleUtil.getString("sim") : BundleUtil.getString("nao")) );
       }
     );
-    
-    alterarSenha.setOnAction((event) -> {
-      alterarSenha.setVisible(false);
-      labelSenha.setVisible(true);
-      senha.setVisible(true);
-      senha.setText(null);
-      confirmarSenha.setVisible(true);
-      confirmarSenha.setText(null);
-      labelConfirmarSenha.setVisible(true);
-    });
+
+    Decorador.decorarNos(Decorador.Tipo.OBRIGATORIO, login, senha, confirmarSenha);
   }
 
   @Override
@@ -78,19 +71,5 @@ public class UsuarioCadastroController extends AbstractCadastroController<Usuari
     login.setText(objeto.getLogin());
     senha.setText(objeto.getSenha());
     confirmarSenha.setText(objeto.getSenha());
-    
-    if(objeto.getId() != null){
-      alterarSenha.setVisible(true);
-      labelSenha.setVisible(false);
-      senha.setVisible(false);
-      confirmarSenha.setVisible(false);
-      labelConfirmarSenha.setVisible(false);
-    }else{
-      alterarSenha.setVisible(false);
-      labelSenha.setVisible(true);
-      senha.setVisible(true);
-      confirmarSenha.setVisible(true);
-      labelConfirmarSenha.setVisible(true);
-    }
   }
 }

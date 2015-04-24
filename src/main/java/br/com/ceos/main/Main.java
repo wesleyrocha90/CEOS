@@ -14,9 +14,9 @@ public class Main extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-//    if (verificaLogin(new Stage())) {
+    if (verificaLogin(new Stage())) {
       exibirPrincipal(new Stage());
-//    }
+    }
   }
 
   public static void main(String[] args) {
@@ -40,8 +40,9 @@ public class Main extends Application {
   public void exibirPrincipal(Stage stage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("/fxml/Principal.fxml"), BundleUtil.getBundle());
     Scene scene = new Scene(root);
+    scene.getStylesheets().add(getClass().getResource("/styles/Principal.css").toExternalForm());
     stage.setTitle(BundleUtil.getString("principal"));
-//    stage.setMaximized(true);
+    stage.setMaximized(true);
     stage.setScene(scene);
     stage.getIcons().add(new Image(getClass().getResource("/icons/" + "logos/CEOS_32.png").toString()));
     stage.show();

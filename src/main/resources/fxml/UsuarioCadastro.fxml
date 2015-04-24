@@ -57,7 +57,7 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -69,14 +69,14 @@
                         <Label text="%ativo" />
                         <Label text="%grupo" GridPane.columnIndex="1" />
                         <Label text="%dataDeExpiracao" GridPane.columnIndex="2" />
-                        <Label text="%login" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-                        <Label fx:id="labelSenha" text="%senha" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-                        <Label fx:id="labelConfirmarSenha" text="%confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-                        <TextField fx:id="login" GridPane.columnSpan="3" GridPane.rowIndex="3" />
                         <DatePicker fx:id="dataDeExpiracao" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <ChoiceBox fx:id="grupo" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <CheckBox fx:id="ativo" mnemonicParsing="false" selected="true" text="%sim" GridPane.rowIndex="1" />
+                        <Label text="%login" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="login" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                        <Label fx:id="labelSenha" text="%senha" GridPane.columnSpan="3" GridPane.rowIndex="4" />
                         <PasswordField fx:id="senha" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+                        <Label fx:id="labelConfirmarSenha" text="%confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="6" />
                         <PasswordField fx:id="confirmarSenha" GridPane.columnSpan="3" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets />
@@ -92,5 +92,10 @@
             </AnchorPane>
          </center>
       </BorderPane>
+      <VBox layoutX="-53.0" layoutY="440.0" spacing="10.0" AnchorPane.leftAnchor="-53.0" AnchorPane.rightAnchor="73.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
   </children>
 </AnchorPane>

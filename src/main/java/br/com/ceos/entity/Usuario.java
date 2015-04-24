@@ -45,5 +45,6 @@ public class Usuario extends EntidadeBase implements Serializable {
     
   @ManyToOne
   @JoinColumn(name = "FK_GRUPO_USUARIO_ID", referencedColumnName = "ID")
+  @NotNull
   @Getter @Setter private GrupoUsuario grupoUsuario;
 }

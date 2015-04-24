@@ -12,7 +12,7 @@ public class SaveActionTask implements Runnable{
   public void run() {
     if(model.getDado() != null){
       if(model.getDado().getId() == null){
-        QueryUtil.saveEntity(model.getDado());
+          QueryUtil.saveEntity(model.getDado());
       }else{
         QueryUtil.updateEntity(model.getDado());
       }

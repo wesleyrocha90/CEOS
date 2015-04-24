@@ -1,6 +1,6 @@
 package br.com.ceos.controller;
 
-import br.com.ceos.data.ClienteData;
+import br.com.ceos.entity.Cliente;
 import br.com.ceos.manager.ClienteManager;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ClienteListaController implements Initializable {
 
   @FXML
-  private TableView<ClienteData> tableCliente;
+  private TableView<Cliente> tableCliente;
   @FXML
   private TableColumn columnCnpjCpf;
   @FXML
@@ -35,5 +35,4 @@ public class ClienteListaController implements Initializable {
     ClienteManager manager = new ClienteManager();
     result.addAll(manager.findAll());
   }
-
 }
